@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabelsID</title>
     <link rel="stylesheet" href="./style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 
 <body>
@@ -23,9 +24,21 @@
                 <p> Voltado para etiquetas Maiores, esse modelo é pensado para identificações de areas, elaboração de placas e avisos, com o tamanho da etiqueta em 18x7cm </p>
             </div>
         </div>
+        <section class="upload">
+            <h2>Upload da planilha</h2>
+            <p>Selecione um arquivo Excel (.xlsx ou .xls). Cada linha da planilha será transformada em uma etiqueta.</p>
+
+            <label for="excel-input" class="btn-upload">Escolher arquivo Excel</label>
+            <input type="file" id="excel-input" accept=".xlsx,.xls" />
+
+            <div id="labels-container" class="labels-grid">
+                <!-- Etiquetas geradas via JavaScript aparecem aqui -->
+            </div>
+        </section>
     </main>
 
 
+    <script src="./script.js"></script>
 </body>
 
 </html>
