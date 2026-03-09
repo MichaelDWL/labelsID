@@ -1,0 +1,12 @@
+/* Util */
+@import "./util/bin.css";
+@import "./util/util.css";
+@import "./util/color.css";
+@import "./util/tipografia.css";
+
+/* Global */
+@import "./global/global.css";
+@import "./global/header.css";
+
+/* Home */
+@import "./home/home.css";
