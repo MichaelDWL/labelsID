@@ -5,17 +5,6 @@
   flex-wrap: wrap;
 }
 
-.btn-upload {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
 .btn-select {
   display: inline-block;
   padding: 0.6rem 1.2rem;
@@ -24,6 +13,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .btn-upload,
@@ -41,47 +31,4 @@
 
 .btn-pdf {
   background-color: #28a745;
-}
-
-.btn {
-  display: flex;
-}
-
-.btn-upload {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.btn-select {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background-color: #28a745;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.btn-upload,
-.btn-pdf {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  border: none;
-}
-
-.btn-pdf {
-  background-color: #28a745;
-  /* margin-left: 0.5rem; */
 }

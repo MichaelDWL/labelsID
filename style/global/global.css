@@ -8,3 +8,12 @@
 a {
   color: inherit;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2rem;
+  align-items: center;
+  background-color: var(--bg-page);
+}
