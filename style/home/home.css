@@ -14,9 +14,9 @@ main {
 }
 
 .upload {
-  display: none;
+  display: block;
   flex: 1;
-  background-color: #f7f7f7;
+  background-color: var(--card-bg);
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -33,20 +33,44 @@ main {
   color: #555;
 }
 
+.btn-upload,
+.btn-pdf {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  border: none;
+}
+
+.btn-pdf {
+  background-color: #28a745;
+  margin-left: 0.5rem;
+}
+
 #excel-input {
   display: none;
 }
 
 .labels-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(70mm, 1fr));
   gap: 1rem;
 }
 
 .label-item {
   border: 3px solid #000;
-  padding: 0.3rem;
+  padding: 2mm;
   background-color: #fff;
+  width: 65mm; /* largura máxima: 6,5 cm */
+  height: 20mm; /* altura máxima: 2 cm  */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .label-inner {
@@ -64,13 +88,13 @@ main {
 }
 
 .label-logos img {
-  height: 40px;
+  height: 12mm;
   width: auto;
   display: block;
 }
 
 .label-text {
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   font-weight: 600;
   text-align: center;
   width: 100%;

@@ -7,6 +7,8 @@
     <title>LabelsID</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -61,10 +63,12 @@
         <section class="upload">
             <h2>Upload da planilha</h2>
             <span></span>
-            <p>Selecione um arquivo Excel (.xlsx ou .xls). Cada linha da planilha será transformada em uma etiqueta.</p>
+            <p>Selecione um arquivo Excel (.xlsx ou .xls). <br> Cada linha da planilha será transformada em uma etiqueta.</p>
 
             <label for="excel-input" class="btn-upload">Escolher arquivo Excel</label>
             <input type="file" id="excel-input" accept=".xlsx,.xls" />
+
+            <button type="button" id="btn-generate-pdf" class="btn-pdf">Gerar PDF das etiquetas</button>
 
             <div id="labels-container" class="labels-grid">
                 <!-- Etiquetas geradas via JavaScript aparecem aqui -->
