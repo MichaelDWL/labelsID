@@ -1,0 +1,14 @@
+:root {
+  --primary: #3b82f6;
+  --secondary: #8b5cf6;
+
+  --bg-page: #f1f5f9;
+  --card-bg: #ffffff;
+
+  --text-main: #0f172a;
+  --text-secondary: #64748b;
+
+  --plan-medium: #0ea5e9;
+  --plan-small: #8b5cf6;
+  --plan-large: #f97316;
+}

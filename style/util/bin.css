@@ -1,0 +1,106 @@
+.container-bin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+  padding: 2rem;
+
+  max-width: 400px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  text-align: justify;
+}
+
+.bin-item {
+  display: flex;
+  max-width: 250px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.bin-header {
+  text-align: center;
+  width: 100%;
+  gap: 0.25rem;
+  padding: 1rem;
+  color: white;
+  background-color: var(--plan-medium);
+}
+
+.bin-header h2 {
+  font-size: 1.25rem;
+}
+
+.bin-size {
+  display: flex;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding: 1rem;
+  border-radius: 2px;
+}
+
+.bin-size span {
+  background-color: var(--plan-small);
+  color: white;
+  padding: 0.5rem 0.7rem;
+  border-radius: 4px;
+  position: relative;
+}
+
+.bin-size span::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background-color: var(--plan-small);
+  position: absolute;
+  top: 50%;
+  left: 110%;
+}
+
+.bin-size span::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  right: 110%;
+}
+
+.bin-sm .bin-item {
+  border: 2px solid var(--plan-small);
+}
+.bin-md .bin-item {
+  border: 2px solid var(--plan-medium);
+}
+.placa .bin-item {
+  border: 2px solid var(--plan-large);
+}
+
+.bin-sm .bin-header,
+.bin-sm .bin-size span,
+.bin-sm .btn-select,
+.bin-sm span::after,
+.bin-sm span::before {
+  background-color: var(--plan-small);
+}
+.bin-md .bin-header,
+.bin-md .bin-size span,
+.bin-md .btn-select,
+.bin-md span::after,
+.bin-md span::before {
+  background-color: var(--plan-medium);
+}
+.placa .bin-header,
+.placa .bin-size span,
+.placa .btn-select,
+.placa span::after,
+.placa span::before {
+  background-color: var(--plan-large);
+}
