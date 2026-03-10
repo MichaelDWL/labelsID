@@ -65,10 +65,11 @@
             <span></span>
             <p>Selecione um arquivo Excel (.xlsx ou .xls). <br> Cada linha da planilha será transformada em uma etiqueta.</p>
 
-            <label for="excel-input" class="btn-upload">Escolher arquivo Excel</label>
-            <input type="file" id="excel-input" accept=".xlsx,.xls" />
-
-            <button type="button" id="btn-generate-pdf" class="btn-pdf">Gerar PDF das etiquetas</button>
+            <div class="btn">
+                <label for="excel-input" class="btn-upload">Escolher arquivo Excel</label>
+                <input type="file" id="excel-input" accept=".xlsx,.xls" />
+                <button type="button" id="btn-generate-pdf" class="btn-pdf">Gerar PDF das etiquetas</button>
+            </div>
 
             <div id="labels-container" class="labels-grid">
                 <!-- Etiquetas geradas via JavaScript aparecem aqui -->
