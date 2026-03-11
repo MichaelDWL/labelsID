@@ -32,6 +32,32 @@ document.addEventListener("DOMContentLoaded", function () {
     return SIZES[sizeKey] || SIZES["bin-md"];
   }
 
+  const modalOverlay = document.getElementById("app-modal");
+  const modalMessage = document.getElementById("modal-message");
+  const modalCloseButton = document.getElementById("modal-close");
+
+  function showModal(message) {
+    if (!modalOverlay || !modalMessage) {
+      alert(message);
+      return;
+    }
+
+    modalMessage.textContent = message;
+    modalOverlay.classList.add("modal-overlay--visible");
+  }
+
+  if (modalCloseButton && modalOverlay) {
+    modalCloseButton.addEventListener("click", () => {
+      modalOverlay.classList.remove("modal-overlay--visible");
+    });
+
+    modalOverlay.addEventListener("click", (event) => {
+      if (event.target === modalOverlay) {
+        modalOverlay.classList.remove("modal-overlay--visible");
+      }
+    });
+  }
+
   const selectButtons = document.querySelectorAll(".btn-select");
   const uploadSections = document.querySelectorAll(".upload");
   const optionCards = document.querySelectorAll(".options .container-bin");
@@ -103,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
         renderLabels(rows, sizeKey, containerId);
       } catch (error) {
         console.error(error);
-        alert(
+        showModal(
           "Não foi possível ler a planilha. Verifique se o arquivo é um Excel válido.",
         );
       }
@@ -119,12 +145,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const labelNodes = Array.from(container.querySelectorAll(".label-item"));
 
     if (!labelNodes.length) {
-      alert("Nenhuma etiqueta gerada. Faça o upload da planilha primeiro.");
+      showModal("Nenhuma etiqueta gerada. Faça o upload da planilha primeiro.");
       return;
     }
 
     if (!window.jspdf || typeof html2canvas !== "function") {
-      alert("Bibliotecas de geração de PDF não foram carregadas.");
+      showModal("Bibliotecas de geração de PDF não foram carregadas.");
       return;
     }
 
