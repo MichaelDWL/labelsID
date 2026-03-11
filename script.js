@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   };
 
+  function getSize(sizeKey) {
+    return SIZES[sizeKey] || SIZES["bin-md"];
+  }
+
   const selectButtons = document.querySelectorAll(".btn-select");
   const uploadSections = document.querySelectorAll(".upload");
   const optionCards = document.querySelectorAll(".options .container-bin");
@@ -84,18 +88,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const reader = new FileReader();
 
     reader.onload = function (e) {
-      const data = new Uint8Array(e.target.result);
-      const workbook = XLSX.read(data, { type: "array" });
+      try {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: "array" });
 
-      const firstSheetName = workbook.SheetNames[0];
-      const sheet = workbook.Sheets[firstSheetName];
+        const firstSheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[firstSheetName];
 
-      const rows = XLSX.utils.sheet_to_json(sheet, {
-        header: 1,
-        blankrows: false,
-      });
+        const rows = XLSX.utils.sheet_to_json(sheet, {
+          header: 1,
+          blankrows: false,
+        });
 
-      renderLabels(rows, sizeKey, containerId);
+        renderLabels(rows, sizeKey, containerId);
+      } catch (error) {
+        console.error(error);
+        alert(
+          "Não foi possível ler a planilha. Verifique se o arquivo é um Excel válido.",
+        );
+      }
     };
 
     reader.readAsArrayBuffer(file);
@@ -123,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
 
-    const size = SIZES[sizeKey] || SIZES["bin-md"];
+    const size = getSize(sizeKey);
 
     const labelWidth = size.width; // em mm
     const labelHeight = size.height; // em mm
@@ -172,16 +183,24 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    pdf.save("etiquetas.pdf");
+    const fileName = `etiquetas-${sizeKey}.pdf`;
+    pdf.save(fileName);
   }
 
   function renderLabels(rows, sizeKey, containerId) {
     const labelsContainer = document.getElementById(containerId);
     if (!labelsContainer) return;
 
+    if (labelsContainer.children.length > 0) {
+      const overwrite = confirm(
+        "Já existem etiquetas geradas. Deseja substituí-las?",
+      );
+      if (!overwrite) return;
+    }
+
     labelsContainer.innerHTML = "";
 
-    const size = SIZES[sizeKey] || SIZES["bin-md"];
+    const size = getSize(sizeKey);
 
     rows.forEach((row) => {
       if (!Array.isArray(row)) return;
