@@ -9,17 +9,29 @@
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <main>
-        <h1 class="font-xl"> Selecione o modelo da Etiqueta </h1>
+        <h1> Selecione o modelo da Etiqueta </h1>
 
         <div class="options">
+
+            <div class="bin-sm container-bin">
+                <div class="bin-item">
+                    <div class="bin-header">
+                        <h2>Etiqueta Pequena</h2>
+                    </div>
+                    <div class="bin-size">
+                        <span>4,5 x 1,5 cm</span>
+                    </div>
+                </div>
+                <p> Ideal para bins menores, como os de nº3, este modelo oferece uma solução compacta e prática para identificação.<br>
+                    <br>Dimensão da etiqueta: 4,5 × 1,5 cm.
+                </p>
+                <button type="button" class="btn-select" data-size="bin-sm">Selecionar ></button>
+            </div>
             <div class="bin-md container-bin">
                 <div class="bin-item">
                     <div class="bin-header">
@@ -29,23 +41,8 @@
                         <span>6,5 x 2 cm</span>
                     </div>
                 </div>
-                <p class="font-sm"> Pensado para bins a partir do nº5, este modelo atende perfeitamente etiquetas de tamanho médio e também funciona muito bem em identificações maiores. <br> <br>Dimensão da etiqueta: 6,5 × 2 cm. </p>
-                <a class="btn-select font-md-bold">Selecionar ></a>
-            </div>
-            <div class="bin-sm container-bin">
-                <div class="bin-item">
-                    <div class="bin-header">
-                        <h2>Etiqueta Pequena</h2>
-                    </div>
-                    <div class="bin-size">
-                        <span>4 x 1,2 cm</span>
-                    </div>
-
-                </div>
-                <p class="font-sm"> Ideal para bins menores, como os de nº3, este modelo oferece uma solução compacta e prática para identificação.<br>
-                    <br>Dimensão da etiqueta: 4,5 × 1,2 cm.
-                </p>
-                <a class="btn-select font-md-bold">Selecionar ></a>
+                <p> Pensado para bins a partir do nº5, este modelo atende perfeitamente etiquetas de tamanho médio e também funciona muito bem em identificações maiores. <br> <br>Dimensão da etiqueta: 6,5 × 2 cm. </p>
+                <button type="button" class="btn-select" data-size="bin-md">Selecionar ></button>
             </div>
             <div class="placa container-bin">
                 <div class="bin-item">
@@ -55,27 +52,56 @@
                     <div class="bin-size">
                         <span>18 x 7 cm</span>
                     </div>
-
                 </div>
-                <p class="font-sm"> Desenvolvido para identificações de áreas, placas e avisos, este modelo é ideal quando é necessário maior destaque e visibilidade.<br>
+                <p> Desenvolvido para identificações de áreas, placas e avisos, este modelo é ideal quando é necessário maior destaque e visibilidade.<br>
                     <br>Dimensão da etiqueta: 18 × 7 cm.
                 </p>
-                <a class="btn-select font-md-bold">Selecionar ></a>
+                <button type="button" class="btn-select" data-size="placa">Selecionar ></button>
             </div>
         </div>
-        <section class="upload">
-            <h2>Upload da planilha</h2>
-            <span></span>
-            <p>Selecione um arquivo Excel (.xlsx ou .xls). <br> Cada linha da planilha será transformada em uma etiqueta.</p>
+
+        <!-- Upload para etiqueta pequena -->
+        <section class="upload" id="upload-sm" data-size="bin-sm">
+            <h2>Upload da planilha - Etiqueta Pequena</h2>
+            <p>Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 4,5 x 1,5 cm.</p>
 
             <div class="btn">
-                <label for="excel-input" class="btn-upload">Escolher arquivo Excel</label>
-                <input type="file" id="excel-input" accept=".xlsx,.xls" />
-                <button type="button" id="btn-generate-pdf" class="btn-pdf">Gerar PDF das etiquetas</button>
+                <label for="excel-input-sm" class="btn-upload">Escolher arquivo Excel</label>
+                <input type="file" id="excel-input-sm" accept=".xlsx,.xls" />
+                <button type="button" id="btn-generate-pdf-sm" class="btn-pdf">Gerar PDF das etiquetas</button>
             </div>
 
-            <div id="labels-container" class="labels-grid">
-                <!-- Etiquetas geradas via JavaScript aparecem aqui -->
+            <div id="labels-container-sm" class="labels-grid">
+            </div>
+        </section>
+
+        <!-- Upload para etiqueta média -->
+        <section class="upload" id="upload-md" data-size="bin-md">
+            <h2>Upload da planilha - Etiqueta Média</h2>
+            <p>Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 6,5 x 2 cm.</p>
+
+            <div class="btn">
+                <label for="excel-input-md" class="btn-upload">Escolher arquivo Excel</label>
+                <input type="file" id="excel-input-md" accept=".xlsx,.xls" />
+                <button type="button" id="btn-generate-pdf-md" class="btn-pdf">Gerar PDF das etiquetas</button>
+            </div>
+
+            <div id="labels-container-md" class="labels-grid">
+            </div>
+        </section>
+
+        <!-- Upload para placa -->
+        <section class="upload" id="upload-placa" data-size="placa">
+            <h2>Upload da planilha - Placa</h2>
+            <p>Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 18 x 7 cm.</p>
+
+            <div class="btn">
+                <label for="excel-input-placa" class="btn-upload">Escolher arquivo Excel</label>
+                <input type="file" id="excel-input-placa" accept=".xlsx,.xls" />
+                <button type="button" id="btn-generate-pdf-placa" class="btn-pdf">Gerar PDF das etiquetas</button>
+            </div>
+
+            <div id="labels-container-placa" class="labels-grid">
             </div>
         </section>
     </main>

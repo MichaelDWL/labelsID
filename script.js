@@ -1,17 +1,83 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const fileInput = document.getElementById("excel-input");
-  const labelsContainer = document.getElementById("labels-container");
-  const pdfButton = document.getElementById("btn-generate-pdf");
+  // configuração de tamanhos (mm) por tipo
+  const SIZES = {
+    "bin-sm": { width: 45, height: 15 }, // 4,5 x 1,5 cm
+    "bin-md": { width: 65, height: 20 }, // 6,5 x 2 cm
+    placa: { width: 180, height: 70 }, // 18 x 7 cm
+  };
 
-  if (!fileInput || !labelsContainer) return;
+  // mapeia cada section de upload
+  const UPLOADS = {
+    "bin-sm": {
+      sectionId: "upload-sm",
+      inputId: "excel-input-sm",
+      containerId: "labels-container-sm",
+      pdfBtnId: "btn-generate-pdf-sm",
+    },
+    "bin-md": {
+      sectionId: "upload-md",
+      inputId: "excel-input-md",
+      containerId: "labels-container-md",
+      pdfBtnId: "btn-generate-pdf-md",
+    },
+    placa: {
+      sectionId: "upload-placa",
+      inputId: "excel-input-placa",
+      containerId: "labels-container-placa",
+      pdfBtnId: "btn-generate-pdf-placa",
+    },
+  };
 
-  fileInput.addEventListener("change", handleFileChange);
+  const selectButtons = document.querySelectorAll(".btn-select");
+  const uploadSections = document.querySelectorAll(".upload");
+  const optionCards = document.querySelectorAll(".options .container-bin");
 
-  if (pdfButton) {
-    pdfButton.addEventListener("click", handleGeneratePdf);
-  }
+  // listeners dos botões de seleção de modelo
+  selectButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const sizeKey = btn.getAttribute("data-size");
+      if (!sizeKey || !UPLOADS[sizeKey]) return;
 
-  function handleFileChange(event) {
+      // ativa somente a section de upload correspondente
+      uploadSections.forEach((sec) => {
+        if (sec.getAttribute("data-size") === sizeKey) {
+          sec.classList.add("upload--active");
+        } else {
+          sec.classList.remove("upload--active");
+        }
+      });
+
+      // marca visualmente o card selecionado
+      optionCards.forEach((card) => {
+        if (card.classList.contains(sizeKey)) {
+          card.classList.add("ativo");
+        } else {
+          card.classList.remove("ativo");
+        }
+      });
+    });
+  });
+
+  // inicializa cada upload (input + botão PDF)
+  Object.keys(UPLOADS).forEach((sizeKey) => {
+    const cfg = UPLOADS[sizeKey];
+    const input = document.getElementById(cfg.inputId);
+    const pdfButton = document.getElementById(cfg.pdfBtnId);
+
+    if (input) {
+      input.addEventListener("change", (event) =>
+        handleFileChange(event, sizeKey, cfg.containerId),
+      );
+    }
+
+    if (pdfButton) {
+      pdfButton.addEventListener("click", () =>
+        handleGeneratePdf(sizeKey, cfg.containerId),
+      );
+    }
+  });
+
+  function handleFileChange(event, sizeKey, containerId) {
     const file = event.target.files && event.target.files[0];
     if (!file) return;
 
@@ -24,22 +90,22 @@ document.addEventListener("DOMContentLoaded", function () {
       const firstSheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[firstSheetName];
 
-      // sheet_to_json com header:1 retorna matriz de linhas (arrays)
       const rows = XLSX.utils.sheet_to_json(sheet, {
         header: 1,
         blankrows: false,
       });
 
-      renderLabels(rows);
+      renderLabels(rows, sizeKey, containerId);
     };
 
     reader.readAsArrayBuffer(file);
   }
 
-  async function handleGeneratePdf() {
-    const labelNodes = Array.from(
-      document.querySelectorAll(".label-item")
-    );
+  async function handleGeneratePdf(sizeKey, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const labelNodes = Array.from(container.querySelectorAll(".label-item"));
 
     if (!labelNodes.length) {
       alert("Nenhuma etiqueta gerada. Faça o upload da planilha primeiro.");
@@ -57,9 +123,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
 
-    const labelWidth = 65; // 6,5 cm
-    const labelHeight = 20; // 2 cm
-    const labelsPerRow = 2; // duas colunas
+    const size = SIZES[sizeKey] || SIZES["bin-md"];
+
+    const labelWidth = size.width; // em mm
+    const labelHeight = size.height; // em mm
+    const labelsPerRow = sizeKey === "placa" ? 1 : 2; // placas: 1 por linha
     const marginTop = 10;
     const marginBottom = 10;
 
@@ -76,8 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
           scale: 2,
           useCORS: true,
           backgroundColor: "#ffffff",
-        })
-      )
+        }),
+      ),
     );
 
     let x = marginX;
@@ -107,8 +175,13 @@ document.addEventListener("DOMContentLoaded", function () {
     pdf.save("etiquetas.pdf");
   }
 
-  function renderLabels(rows) {
+  function renderLabels(rows, sizeKey, containerId) {
+    const labelsContainer = document.getElementById(containerId);
+    if (!labelsContainer) return;
+
     labelsContainer.innerHTML = "";
+
+    const size = SIZES[sizeKey] || SIZES["bin-md"];
 
     rows.forEach((row) => {
       if (!Array.isArray(row)) return;
@@ -122,7 +195,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!text) return;
 
       const labelEl = document.createElement("div");
-      labelEl.className = "label-item";
+      labelEl.className = `label-item label-item--${sizeKey}`;
+      labelEl.style.width = `${size.width}mm`;
+      labelEl.style.height = `${size.height}mm`;
 
       labelEl.innerHTML = `
         <div class="label-inner">
@@ -157,4 +232,3 @@ document.addEventListener("DOMContentLoaded", function () {
       .replace(/'/g, "&#039;");
   }
 });
-

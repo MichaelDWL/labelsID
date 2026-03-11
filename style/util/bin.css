@@ -110,3 +110,13 @@
 .placa span::before {
   background-color: var(--plan-large);
 }
+
+.options .bin-sm.ativo {
+  border: 2px solid var(--plan-small);
+}
+.options .bin-md.ativo {
+  border: 2px solid var(--plan-medium);
+}
+.options .placa.ativo {
+  border: 2px solid var(--plan-large);
+}

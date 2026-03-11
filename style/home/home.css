@@ -5,7 +5,7 @@
 }
 
 .upload {
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 100%;
   gap: 20px;
@@ -14,6 +14,10 @@
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.upload.upload--active {
+  display: flex;
 }
 
 .upload h2 {
@@ -27,7 +31,7 @@
   color: #555;
 }
 
-#excel-input {
+.upload input[type="file"] {
   display: none;
 }
 
@@ -37,12 +41,15 @@
   gap: 1rem;
 }
 
+/* Visualização: placa sempre em uma coluna */
+.upload[data-size="placa"] .labels-grid {
+  grid-template-columns: 1fr;
+}
+
 .label-item {
   border: 3px solid #000;
   padding: 2mm;
   background-color: #fff;
-  width: 65mm; /* largura máxima: 6,5 cm */
-  height: 20mm; /* altura máxima: 2 cm  */
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -79,4 +86,44 @@
 .label-text span {
   white-space: normal;
   display: inline-block;
+}
+
+/* Ajustes específicos para etiqueta pequena (bin-sm) */
+.label-item--bin-sm {
+  padding: 1mm;
+}
+
+.label-item--bin-sm .label-inner {
+  /* flex-direction: row; */
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.label-item--bin-sm .label-logos img {
+  height: 7mm;
+}
+
+.label-item--bin-sm .label-text {
+  font-size: 0.65rem;
+  /* text-align: left; */
+  line-height: 1.1;
+}
+
+/* Ajustes específicos para placa (18 x 7 cm) */
+.label-item--placa {
+  padding: 8mm 6mm;
+}
+
+.label-item--placa .label-inner {
+  gap: 10mm;
+}
+
+.label-item--placa .label-logos img {
+  height: 25mm;
+}
+
+.label-item--placa .label-text {
+  font-size: 2.3rem;
+  text-transform: uppercase;
+  font-weight: 800;
 }
