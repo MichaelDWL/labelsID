@@ -7,8 +7,23 @@
 
   --text-main: #0f172a;
   --text-sec: #64748b;
+  --text-terc: #26487e;
+  --text-quar: #54698e;
 
   --plan-medium: #0ea5e9;
   --plan-small: #8b5cf6;
   --plan-large: #f97316;
+}
+
+.c-tx-m {
+  color: var(--text-main);
+}
+.c-tx-s {
+  color: var(--text-sec);
+}
+.c-tx-t {
+  color: var(--text-terc);
+}
+.c-tx-q {
+  color: var(--text-quar);
 }
