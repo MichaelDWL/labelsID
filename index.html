@@ -90,46 +90,70 @@
 
         <!-- Upload para etiqueta pequena -->
         <section class="upload" id="upload-sm" data-size="bin-sm">
-            <h2 class="font-lg-bold">Upload da planilha - Etiqueta Pequena</h2>
-            <p class="font-sm">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 4,5 x 1,5 cm.</p>
+            <div class="upload-grid">
+                <div class="upload-main">
+                    <h2 class="font-lg-bold">Upload da planilha - Etiqueta Pequena</h2>
+                    <p class="font-sm">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 4,5 x 1,5 cm.</p>
 
-            <div class="btn">
-                <label for="excel-input-sm" class="btn-upload">Escolher arquivo Excel</label>
-                <input type="file" id="excel-input-sm" accept=".xlsx,.xls" />
-                <button type="button" id="btn-generate-pdf-sm" class="btn-pdf">Gerar PDF das etiquetas</button>
-            </div>
+                    <div class="btn">
+                        <label for="excel-input-sm" class="btn-upload">Escolher arquivo Excel</label>
+                        <input type="file" id="excel-input-sm" accept=".xlsx,.xls" />
+                        <button type="button" id="btn-generate-pdf-sm" class="btn-pdf">Gerar PDF das etiquetas</button>
+                    </div>
 
-            <div id="labels-container-sm" class="labels-grid">
+                    <div id="labels-container-sm" class="labels-grid">
+                    </div>
+                </div>
+                <div class="pdf-preview-wrapper">
+                    <h3 class="font-md-bold">Pré-visualização</h3>
+                    <div id="pdf-preview-sm" class="pdf-preview-page"></div>
+                </div>
             </div>
         </section>
 
         <!-- Upload para etiqueta média -->
         <section class="upload" id="upload-md" data-size="bin-md">
-            <h2 class="font-lg-bold">Upload da planilha - Etiqueta Média</h2>
-            <p class="font-sm">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 6,5 x 2 cm.</p>
+            <div class="upload-grid">
+                <div class="upload-main">
+                    <h2 class="font-lg-bold">Upload da planilha - Etiqueta Média</h2>
+                    <p class="font-sm">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 6,5 x 2 cm.</p>
 
-            <div class="btn">
-                <label for="excel-input-md" class="btn-upload">Escolher arquivo Excel</label>
-                <input type="file" id="excel-input-md" accept=".xlsx,.xls" />
-                <button type="button" id="btn-generate-pdf-md" class="btn-pdf">Gerar PDF das etiquetas</button>
-            </div>
+                    <div class="btn">
+                        <label for="excel-input-md" class="btn-upload">Escolher arquivo Excel</label>
+                        <input type="file" id="excel-input-md" accept=".xlsx,.xls" />
+                        <button type="button" id="btn-generate-pdf-md" class="btn-pdf">Gerar PDF das etiquetas</button>
+                    </div>
 
-            <div id="labels-container-md" class="labels-grid">
+                    <div id="labels-container-md" class="labels-grid">
+                    </div>
+                </div>
+                <div class="pdf-preview-wrapper">
+                    <h3 class="font-md-bold">Pré-visualização</h3>
+                    <div id="pdf-preview-md" class="pdf-preview-page"></div>
+                </div>
             </div>
         </section>
 
         <!-- Upload para placa -->
         <section class="upload" id="upload-placa" data-size="placa">
-            <h2 class="font-lg-bold">Upload da planilha - Placa</h2>
-            <p class="font-sm">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 18 x 7 cm.</p>
+            <div class="upload-grid">
+                <div class="upload-main">
+                    <h2 class="font-lg-bold">Upload da planilha - Placa</h2>
+                    <p class="font-sm">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 18 x 7 cm.</p>
 
-            <div class="btn">
-                <label for="excel-input-placa" class="btn-upload">Escolher arquivo Excel</label>
-                <input type="file" id="excel-input-placa" accept=".xlsx,.xls" />
-                <button type="button" id="btn-generate-pdf-placa" class="btn-pdf">Gerar PDF das etiquetas</button>
-            </div>
+                    <div class="btn">
+                        <label for="excel-input-placa" class="btn-upload">Escolher arquivo Excel</label>
+                        <input type="file" id="excel-input-placa" accept=".xlsx,.xls" />
+                        <button type="button" id="btn-generate-pdf-placa" class="btn-pdf">Gerar PDF das etiquetas</button>
+                    </div>
 
-            <div id="labels-container-placa" class="labels-grid">
+                    <div id="labels-container-placa" class="labels-grid">
+                    </div>
+                </div>
+                <div class="pdf-preview-wrapper">
+                    <h3 class="font-md-bold">Pré-visualização</h3>
+                    <div id="pdf-preview-placa" class="pdf-preview-page"></div>
+                </div>
             </div>
         </section>
     </main>

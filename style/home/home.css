@@ -6,10 +6,7 @@
 
 .upload {
   display: none;
-  flex-direction: column;
   width: 100%;
-  gap: 20px;
-  /* flex: 1; */
   background-color: var(--card-bg);
   border-radius: 8px;
   padding: 1.5rem;
@@ -17,7 +14,7 @@
 }
 
 .upload.upload--active {
-  display: flex;
+  display: block;
 }
 
 .upload h2 {
@@ -39,6 +36,48 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(70mm, 1fr));
   gap: 1rem;
+}
+
+/* Grid específico para etiquetas pequenas: mais colunas e menos espaço */
+.upload[data-size="bin-sm"] .labels-grid {
+  grid-template-columns: repeat(auto-fill, minmax(55mm, 1fr));
+  gap: 0.4rem;
+}
+
+.upload-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.upload-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pdf-preview-wrapper h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.pdf-preview-page {
+  width: 100%;
+  aspect-ratio: 210 / 297; /* A4 em pé */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdf-preview-page img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Visualização: placa sempre em uma coluna */
@@ -130,6 +169,10 @@
 
 @media (max-width: 800px) {
   .options {
+    grid-template-columns: 1fr;
+  }
+
+  .upload-grid {
     grid-template-columns: 1fr;
   }
 }

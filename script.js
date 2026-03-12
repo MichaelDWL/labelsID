@@ -13,18 +13,21 @@ document.addEventListener("DOMContentLoaded", function () {
       inputId: "excel-input-sm",
       containerId: "labels-container-sm",
       pdfBtnId: "btn-generate-pdf-sm",
+      previewId: "pdf-preview-sm",
     },
     "bin-md": {
       sectionId: "upload-md",
       inputId: "excel-input-md",
       containerId: "labels-container-md",
       pdfBtnId: "btn-generate-pdf-md",
+      previewId: "pdf-preview-md",
     },
     placa: {
       sectionId: "upload-placa",
       inputId: "excel-input-placa",
       containerId: "labels-container-placa",
       pdfBtnId: "btn-generate-pdf-placa",
+      previewId: "pdf-preview-placa",
     },
   };
 
@@ -96,18 +99,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (input) {
       input.addEventListener("change", (event) =>
-        handleFileChange(event, sizeKey, cfg.containerId),
+        handleFileChange(event, sizeKey, cfg.containerId, cfg.previewId),
       );
     }
 
     if (pdfButton) {
       pdfButton.addEventListener("click", () =>
-        handleGeneratePdf(sizeKey, cfg.containerId),
+        handleGeneratePdf(sizeKey, cfg.containerId, cfg.previewId),
       );
     }
   });
 
-  function handleFileChange(event, sizeKey, containerId) {
+  function handleFileChange(event, sizeKey, containerId, previewId) {
     const file = event.target.files && event.target.files[0];
     if (!file) return;
 
@@ -126,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
           blankrows: false,
         });
 
-        renderLabels(rows, sizeKey, containerId);
+        renderLabels(rows, sizeKey, containerId, previewId);
       } catch (error) {
         console.error(error);
         showModal(
@@ -138,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     reader.readAsArrayBuffer(file);
   }
 
-  async function handleGeneratePdf(sizeKey, containerId) {
+  async function handleGeneratePdf(sizeKey, containerId, previewId) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
@@ -164,7 +167,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const labelWidth = size.width; // em mm
     const labelHeight = size.height; // em mm
-    const labelsPerRow = sizeKey === "placa" ? 1 : 2; // placas: 1 por linha
+    const labelsPerRow =
+      sizeKey === "placa" ? 1 : sizeKey === "bin-sm" ? 3 : 2; // pequenas: 3 por linha, placas: 1, demais: 2
     const marginTop = 10;
     const marginBottom = 10;
 
@@ -184,6 +188,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }),
       ),
     );
+
+    // Atualiza a pré-visualização da primeira página antes de gerar o PDF
+    renderPdfPreview({
+      sizeKey,
+      previewId,
+      canvases,
+      pageWidth,
+      pageHeight,
+      labelWidth,
+      labelHeight,
+      labelsPerRow,
+      marginTop,
+      marginBottom,
+      gapX,
+      gapY,
+    });
 
     let x = marginX;
     let y = marginTop;
@@ -213,7 +233,79 @@ document.addEventListener("DOMContentLoaded", function () {
     pdf.save(fileName);
   }
 
-  function renderLabels(rows, sizeKey, containerId) {
+  function renderPdfPreview({
+    sizeKey,
+    previewId,
+    canvases,
+    pageWidth,
+    pageHeight,
+    labelWidth,
+    labelHeight,
+    labelsPerRow,
+    marginTop,
+    marginBottom,
+    gapX,
+    gapY,
+  }) {
+    if (!previewId) return;
+
+    const previewContainer = document.getElementById(previewId);
+    if (!previewContainer) return;
+
+    if (!canvases || !canvases.length) {
+      previewContainer.innerHTML = "";
+      return;
+    }
+
+    const scale = 4; // pixels por mm para a miniatura
+    const canvasWidth = pageWidth * scale;
+    const canvasHeight = pageHeight * scale;
+
+    const pageCanvas = document.createElement("canvas");
+    pageCanvas.width = canvasWidth;
+    pageCanvas.height = canvasHeight;
+
+    const ctx = pageCanvas.getContext("2d");
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+
+    let x = (pageWidth - (labelsPerRow * (labelWidth + gapX) - gapX)) / 2;
+    let y = marginTop;
+    let labelIndex = 0;
+
+    for (let i = 0; i < canvases.length; i++) {
+      const canvas = canvases[i];
+
+      if (y + labelHeight > pageHeight - marginBottom) {
+        // Só mostramos a primeira página na pré-visualização
+        break;
+      }
+
+      const drawX = x * scale;
+      const drawY = y * scale;
+      const drawW = labelWidth * scale;
+      const drawH = labelHeight * scale;
+
+      ctx.drawImage(canvas, drawX, drawY, drawW, drawH);
+
+      labelIndex++;
+      if (labelIndex % labelsPerRow === 0) {
+        x = (pageWidth - (labelsPerRow * (labelWidth + gapX) - gapX)) / 2;
+        y += labelHeight + gapY;
+      } else {
+        x += labelWidth + gapX;
+      }
+    }
+
+    const img = document.createElement("img");
+    img.src = pageCanvas.toDataURL("image/png");
+    img.alt = `Pré-visualização da primeira página (${sizeKey})`;
+
+    previewContainer.innerHTML = "";
+    previewContainer.appendChild(img);
+  }
+
+  function renderLabels(rows, sizeKey, containerId, previewId) {
     const labelsContainer = document.getElementById(containerId);
     if (!labelsContainer) return;
 
@@ -265,6 +357,67 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
 
       labelsContainer.appendChild(labelEl);
+    });
+
+    // Atualiza a pré-visualização assim que as etiquetas são geradas
+    updatePreviewFromLabels(sizeKey, containerId, previewId);
+  }
+
+  async function updatePreviewFromLabels(sizeKey, containerId, previewId) {
+    if (!previewId) return;
+
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const labelNodes = Array.from(container.querySelectorAll(".label-item"));
+    if (!labelNodes.length) {
+      const preview = document.getElementById(previewId);
+      if (preview) preview.innerHTML = "";
+      return;
+    }
+
+    if (!window.jspdf || typeof html2canvas !== "function") {
+      return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const tmpPdf = new jsPDF({ unit: "mm", format: "a4" });
+    const pageWidth = tmpPdf.internal.pageSize.getWidth();
+    const pageHeight = tmpPdf.internal.pageSize.getHeight();
+
+    const size = getSize(sizeKey);
+    const labelWidth = size.width;
+    const labelHeight = size.height;
+    const labelsPerRow =
+      sizeKey === "placa" ? 1 : sizeKey === "bin-sm" ? 3 : 2;
+    const marginTop = 10;
+    const marginBottom = 10;
+    const gapX = 2;
+    const gapY = 3;
+
+    const canvases = await Promise.all(
+      labelNodes.map((node) =>
+        html2canvas(node, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff",
+        }),
+      ),
+    );
+
+    renderPdfPreview({
+      sizeKey,
+      previewId,
+      canvases,
+      pageWidth,
+      pageHeight,
+      labelWidth,
+      labelHeight,
+      labelsPerRow,
+      marginTop,
+      marginBottom,
+      gapX,
+      gapY,
     });
   }
 
