@@ -68,6 +68,14 @@
   left: 110%;
 }
 
+.bin-sm .bin-size span::after {
+  width: 56px;
+}
+
+.bin-sm .bin-size span::before {
+  width: 56px;
+}
+
 .bin-size span::before {
   content: "";
   display: block;
@@ -119,4 +127,24 @@
 }
 .options .placa.ativo {
   border: 2px solid var(--plan-large);
+}
+
+@media (max-width: 1000px) {
+  .bin-size span::after {
+    width: 0;
+  }
+  .bin-size span::before {
+    width: 0;
+  }
+
+  .bin-sm .bin-size span::after {
+    width: 0;
+  }
+
+  .bin-sm .bin-size span::before {
+    width: 0;
+  }
+}
+
+@media (max-width: 1000px) {
 }

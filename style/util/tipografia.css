@@ -1,8 +1,9 @@
 .font-sm {
   font-family: "Roboto", sans-serif;
   font-size: 0.875rem; /* ~14px */
-  line-height: 1.4;
+  line-height: 1;
   font-weight: 400;
+  color: var(--text-sec);
 }
 
 .font-md {
@@ -26,11 +27,25 @@
   font-weight: 500;
 }
 
+.font-lg-bold {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.4;
+  font-weight: 600;
+}
+
 .font-xl {
   font-family: "Roboto", sans-serif;
   font-size: 1.5rem; /* 24px */
   line-height: 1.3;
   font-weight: 500;
+}
+
+.font-xl-bold {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.3;
+  font-weight: 600;
 }
 
 .font-display {
@@ -50,12 +65,12 @@
 }
 
 /* Ajustes responsivos de tipografia */
-@media (min-width: 480px) {
+@media (max-width: 480px) {
   .font-sm {
     font-size: 0.9rem;
   }
 
-  .font-md {
+  a {
     font-size: 1.05rem;
   }
 
@@ -63,7 +78,14 @@
     font-size: 1.3rem;
   }
 
+  .font-lg-bold {
+    font-size: 1.3rem;
+  }
+
   .font-xl {
+    font-size: 1.6rem;
+  }
+  .font-xl-bold {
     font-size: 1.6rem;
   }
 
@@ -72,7 +94,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .font-sm {
     font-size: 0.95rem;
   }
@@ -81,11 +103,18 @@
     font-size: 1.1rem;
   }
 
+  .font-md-bold {
+    font-size: 1.1rem;
+  }
+
   .font-lg {
     font-size: 1.4rem;
   }
+  .font-lg-bold {
+    font-size: 1.4rem;
+  }
 
-  .font-xl {
+  .font-xl-bold {
     font-size: 1.8rem;
   }
 
@@ -94,20 +123,20 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 900px) {
   .font-sm {
     font-size: 1rem;
   }
 
-  .font-md {
-    font-size: 1.125rem;
+  .font-md-bold {
+    font-size: 0.9rem;
   }
 
-  .font-lg {
+  .font-lg-bold {
     font-size: 1.5rem;
   }
 
-  .font-xl {
+  .font-xl-bold {
     font-size: 2rem;
   }
 

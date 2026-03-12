@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabelsID</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./style/style.css">
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -13,57 +14,69 @@
 
 <body>
 
-    <main>
-        <h1> Selecione o modelo da Etiqueta </h1>
+    <header class="header">
+        <h1 class="font-xl-bold">LabelsID</h1>
+
+        <nav class="nav">
+            <ul class="font-md-bold">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#docw">Doc</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="home">
+        <h1 class="font-xl-bold"> Selecione o modelo da Etiqueta </h1>
 
         <div class="options">
 
             <div class="bin-sm container-bin">
                 <div class="bin-item">
                     <div class="bin-header">
-                        <h2>Etiqueta Pequena</h2>
+                        <h2 class="font-md-bold">Etiqueta Pequena</h2>
                     </div>
                     <div class="bin-size">
                         <span>4,5 x 1,5 cm</span>
                     </div>
                 </div>
-                <p> Ideal para bins menores, como os de nº3, este modelo oferece uma solução compacta e prática para identificação.<br>
+                <p class="font-sm"> Ideal para bins menores, como os de nº3, este modelo oferece uma solução compacta e prática para identificação.<br>
                     <br>Dimensão da etiqueta: 4,5 × 1,5 cm.
                 </p>
-                <button type="button" class="btn-select" data-size="bin-sm">Selecionar ></button>
+                <button type="button" class="btn-select font-md-bold" data-size="bin-sm">Selecionar <i class="fa-solid fa-chevron-right"></i></button>
             </div>
             <div class="bin-md container-bin">
                 <div class="bin-item">
                     <div class="bin-header">
-                        <h2>Etiqueta Média</h2>
+                        <h2 class="font-md-bold">Etiqueta Média</h2>
                     </div>
                     <div class="bin-size">
                         <span>6,5 x 2 cm</span>
                     </div>
                 </div>
-                <p> Pensado para bins a partir do nº5, este modelo atende perfeitamente etiquetas de tamanho médio e também funciona muito bem em identificações maiores. <br> <br>Dimensão da etiqueta: 6,5 × 2 cm. </p>
-                <button type="button" class="btn-select" data-size="bin-md">Selecionar ></button>
+                <p class="font-sm"> Pensado para bins a partir do nº5, este modelo atende perfeitamente etiquetas de tamanho médio e também funciona muito bem em identificações maiores. <br> <br>Dimensão da etiqueta: 6,5 × 2 cm. </p>
+                <button type="button" class="btn-select font-md-bold" data-size="bin-md">Selecionar <i class="fa-solid fa-chevron-right"></i></button>
             </div>
             <div class="placa container-bin">
                 <div class="bin-item">
                     <div class="bin-header">
-                        <h2>Etiqueta Grande</h2>
+                        <h2 class="font-md-bold">Etiqueta Grande</h2>
                     </div>
                     <div class="bin-size">
                         <span>18 x 7 cm</span>
                     </div>
                 </div>
-                <p> Desenvolvido para identificações de áreas, placas e avisos, este modelo é ideal quando é necessário maior destaque e visibilidade.<br>
+                <p class="font-sm"> Desenvolvido para identificações de áreas, placas e avisos, este modelo é ideal quando é necessário maior destaque e visibilidade.<br>
                     <br>Dimensão da etiqueta: 18 × 7 cm.
                 </p>
-                <button type="button" class="btn-select" data-size="placa">Selecionar ></button>
+                <button type="button" class="btn-select font-md-bold" data-size="placa">Selecionar <i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
 
         <!-- Upload para etiqueta pequena -->
         <section class="upload" id="upload-sm" data-size="bin-sm">
-            <h2>Upload da planilha - Etiqueta Pequena</h2>
-            <p>Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 4,5 x 1,5 cm.</p>
+            <h2 class="font-lg-bold">Upload da planilha - Etiqueta Pequena</h2>
+            <p class="font-sm">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 4,5 x 1,5 cm.</p>
 
             <div class="btn">
                 <label for="excel-input-sm" class="btn-upload">Escolher arquivo Excel</label>
@@ -77,8 +90,8 @@
 
         <!-- Upload para etiqueta média -->
         <section class="upload" id="upload-md" data-size="bin-md">
-            <h2>Upload da planilha - Etiqueta Média</h2>
-            <p>Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 6,5 x 2 cm.</p>
+            <h2 class="font-lg-bold">Upload da planilha - Etiqueta Média</h2>
+            <p class="font-sm">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 6,5 x 2 cm.</p>
 
             <div class="btn">
                 <label for="excel-input-md" class="btn-upload">Escolher arquivo Excel</label>
@@ -92,8 +105,8 @@
 
         <!-- Upload para placa -->
         <section class="upload" id="upload-placa" data-size="placa">
-            <h2>Upload da planilha - Placa</h2>
-            <p>Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 18 x 7 cm.</p>
+            <h2 class="font-lg-bold">Upload da planilha - Placa</h2>
+            <p class="font-sm">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 18 x 7 cm.</p>
 
             <div class="btn">
                 <label for="excel-input-placa" class="btn-upload">Escolher arquivo Excel</label>
@@ -109,7 +122,7 @@
     <div class="modal-overlay" id="app-modal">
         <div class="modal">
             <h2 class="modal-title">Aviso</h2>
-            <p class="modal-message" id="modal-message"></p>
+            <p class="font-sm" class="modal-message" id="modal-message"></p>
             <button type="button" class="modal-button" id="modal-close">OK</button>
         </div>
     </div>

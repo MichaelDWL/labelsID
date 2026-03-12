@@ -9,6 +9,14 @@ a {
   color: inherit;
 }
 
+ul,
+li,
+a {
+  text-decoration: none;
+  color: inherit;
+  list-style: none;
+}
+
 main {
   display: flex;
   flex-direction: column;
