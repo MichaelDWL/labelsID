@@ -85,11 +85,11 @@
   grid-template-columns: 1fr;
 }
 
+/* modelo da etiqueta */
 .label-item {
   border: 3px solid #000;
   padding: 2mm;
   background-color: #fff;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,12 +167,29 @@
   font-weight: 800;
 }
 
+/* Esconder a visualização da placa em tamanhos menores */
 @media (max-width: 800px) {
-  .options {
+  .label-item--placa {
+    display: none;
+  }
+  .upload-grid {
+    align-content: center;
+  }
+  .labels-grid {
+    overflow-y: scroll;
+    height: 310px;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 1140px) {
+  .upload-grid {
     grid-template-columns: 1fr;
   }
+}
 
-  .upload-grid {
+@media (max-width: 900px) {
+  .options {
     grid-template-columns: 1fr;
   }
 }

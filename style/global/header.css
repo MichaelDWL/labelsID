@@ -21,11 +21,43 @@
   gap: 1.125rem;
 }
 
+.nav a {
+  position: relative;
+  padding: 0.43rem;
+  cursor: pointer;
+}
+
+.nav a:hover {
+  color: var(--text-terc);
+}
+
+.nav a::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: var(--text-terc);
+  position: absolute;
+  transition: 0.4s ease;
+}
+
+.nav li a:hover:after {
+  width: 100%;
+}
+
 .intro {
   display: flex;
   flex-direction: column;
   padding: 4rem;
   gap: 1rem;
-  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
-  /* background: url(../../assets/bg-intro.png); */
+}
+
+@media (max-width: 480px) {
+  .header {
+    gap: 0.7rem;
+  }
+
+  .nav ul {
+    gap: 0.75rem;
+  }
 }

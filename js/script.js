@@ -167,8 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const labelWidth = size.width; // em mm
     const labelHeight = size.height; // em mm
-    const labelsPerRow =
-      sizeKey === "placa" ? 1 : sizeKey === "bin-sm" ? 3 : 2; // pequenas: 3 por linha, placas: 1, demais: 2
+    const labelsPerRow = sizeKey === "placa" ? 1 : sizeKey === "bin-sm" ? 3 : 2; // pequenas: 3 por linha, placas: 1, demais: 2
     const marginTop = 10;
     const marginBottom = 10;
 
@@ -388,8 +387,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const size = getSize(sizeKey);
     const labelWidth = size.width;
     const labelHeight = size.height;
-    const labelsPerRow =
-      sizeKey === "placa" ? 1 : sizeKey === "bin-sm" ? 3 : 2;
+    const labelsPerRow = sizeKey === "placa" ? 1 : sizeKey === "bin-sm" ? 3 : 2;
     const marginTop = 10;
     const marginBottom = 10;
     const gapX = 2;
