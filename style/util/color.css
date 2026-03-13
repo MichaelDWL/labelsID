@@ -4,6 +4,7 @@
 
   --bg-page: #f1f5f9;
   --card-bg: #ffffff;
+  --bg-footer: #26487e;
 
   --text-main: #0f172a;
   --text-sec: #64748b;
@@ -26,4 +27,8 @@
 }
 .c-tx-q {
   color: var(--text-quar);
+}
+
+.c-tx-white {
+  color: #ffffff;
 }
