@@ -87,7 +87,6 @@ main {
 .modal-button:hover {
   background-color: #1d4ed8;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  /* transform: translateY(-1px); */
 }
 
 .modal-button:active {
