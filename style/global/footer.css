@@ -12,6 +12,10 @@ footer {
   background-color: #ffffff;
 }
 
+.info p {
+  max-width: 56ch;
+}
+
 .creditos::before {
   content: "";
   display: block;
@@ -147,5 +151,11 @@ footer {
 
   .footer-nav ul {
     align-items: center;
+  }
+}
+
+@media (max-width: 650px) {
+  .creditos::before {
+    width: 300px;
   }
 }
