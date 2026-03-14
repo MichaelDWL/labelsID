@@ -58,7 +58,7 @@
 .intro {
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  padding: 3rem;
   gap: 1rem;
 }
 
