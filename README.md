@@ -6,7 +6,7 @@
 
 ## 🔗 Link do projeto
 
-> **Em produção:** [Adicione aqui o link após o deploy](#)
+> **Em produção:** [www.labelsid.com.br](#)
 
 ---
 
