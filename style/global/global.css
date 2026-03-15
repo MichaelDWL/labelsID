@@ -9,6 +9,11 @@ a {
   color: inherit;
 }
 
+body {
+  background-color: var(--bg-page);
+  overflow-x: hidden;
+}
+
 ul,
 li,
 a {
@@ -21,9 +26,14 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 2rem;
+  padding: 1.25rem;
   align-items: center;
   background-color: var(--bg-page);
+  margin-top: 40px;
+  margin-bottom: 80px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .modal-overlay {
@@ -33,7 +43,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1.25rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
@@ -50,7 +60,7 @@ main {
   flex-direction: column;
   background: #ffffff;
   border-radius: 8px;
-  padding: 1.75rem 2rem;
+  padding: 1.25rem;
   max-width: 420px;
   width: 100%;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
@@ -58,13 +68,13 @@ main {
 
 .modal-title {
   font-size: 1.25rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .modal-message {
   font-size: 0.95rem;
   color: #444;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .modal-button {
@@ -72,7 +82,7 @@ main {
   align-self: flex-end;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem 1.5rem;
+  padding: 1.25rem;
   background-color: #2563eb;
   color: #fff;
   border-radius: 4px;

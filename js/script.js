@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
       containerId: "labels-container-sm",
       pdfBtnId: "btn-generate-pdf-sm",
       previewId: "pdf-preview-sm",
+      logo1InputId: "logo1-input-sm",
+      logo2InputId: "logo2-input-sm",
     },
     "bin-md": {
       sectionId: "upload-md",
@@ -21,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
       containerId: "labels-container-md",
       pdfBtnId: "btn-generate-pdf-md",
       previewId: "pdf-preview-md",
+      logo1InputId: "logo1-input-md",
+      logo2InputId: "logo2-input-md",
     },
     placa: {
       sectionId: "upload-placa",
@@ -28,7 +32,16 @@ document.addEventListener("DOMContentLoaded", function () {
       containerId: "labels-container-placa",
       pdfBtnId: "btn-generate-pdf-placa",
       previewId: "pdf-preview-placa",
+      logo1InputId: "logo1-input-placa",
+      logo2InputId: "logo2-input-placa",
     },
+  };
+
+  // estado das logos enviadas pelo usuário por tamanho: [urlLogo1, urlLogo2]
+  const logosBySize = {
+    "bin-sm": [null, null],
+    "bin-md": [null, null],
+    placa: [null, null],
   };
 
   function getSize(sizeKey) {
@@ -91,11 +104,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // inicializa cada upload (input + botão PDF)
+  // inicializa cada upload (input + botão PDF + inputs de logo)
   Object.keys(UPLOADS).forEach((sizeKey) => {
     const cfg = UPLOADS[sizeKey];
     const input = document.getElementById(cfg.inputId);
     const pdfButton = document.getElementById(cfg.pdfBtnId);
+    const logo1Input = cfg.logo1InputId ? document.getElementById(cfg.logo1InputId) : null;
+    const logo2Input = cfg.logo2InputId ? document.getElementById(cfg.logo2InputId) : null;
 
     if (input) {
       input.addEventListener("change", (event) =>
@@ -108,7 +123,45 @@ document.addEventListener("DOMContentLoaded", function () {
         handleGeneratePdf(sizeKey, cfg.containerId, cfg.previewId),
       );
     }
+
+    if (logo1Input) {
+      logo1Input.addEventListener("change", (e) =>
+        handleLogoChange(e, sizeKey, 0),
+      );
+    }
+    if (logo2Input) {
+      logo2Input.addEventListener("change", (e) =>
+        handleLogoChange(e, sizeKey, 1),
+      );
+    }
   });
+
+  function handleLogoChange(event, sizeKey, index) {
+    const input = event.target;
+    if (input.disabled) return;
+    const file = input.files && input.files[0];
+    const field = input.closest(".upload-logo-field");
+    const statusEl = field ? field.querySelector(".upload-logo-status") : null;
+
+    if (!file) {
+      logosBySize[sizeKey][index] = null;
+      if (field) field.classList.remove("upload-logo-field--uploaded");
+      if (statusEl) statusEl.textContent = "";
+      return;
+    }
+    if (file.type !== "image/png") {
+      showModal("Selecione uma imagem no formato PNG (recomendado fundo transparente).");
+      input.value = "";
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      logosBySize[sizeKey][index] = e.target.result;
+      if (field) field.classList.add("upload-logo-field--uploaded");
+      if (statusEl) statusEl.textContent = "Enviado ✓";
+    };
+    reader.readAsDataURL(file);
+  }
 
   function handleFileChange(event, sizeKey, containerId, previewId) {
     const file = event.target.files && event.target.files[0];
@@ -130,6 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         renderLabels(rows, sizeKey, containerId, previewId);
+        lockLogoUploads(sizeKey);
       } catch (error) {
         console.error(error);
         showModal(
@@ -139,6 +193,21 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     reader.readAsArrayBuffer(file);
+  }
+
+  function lockLogoUploads(sizeKey) {
+    const cfg = UPLOADS[sizeKey];
+    if (!cfg || !cfg.logo1InputId || !cfg.logo2InputId) return;
+
+    const logo1Input = document.getElementById(cfg.logo1InputId);
+    const logo2Input = document.getElementById(cfg.logo2InputId);
+    if (logo1Input) logo1Input.disabled = true;
+    if (logo2Input) logo2Input.disabled = true;
+
+    const uploadLogosEl = document.querySelector(
+      `.upload[data-size="${sizeKey}"] .upload-logos`,
+    );
+    if (uploadLogosEl) uploadLogosEl.classList.add("upload-logos--locked");
   }
 
   async function handleGeneratePdf(sizeKey, containerId, previewId) {
@@ -335,20 +404,21 @@ document.addEventListener("DOMContentLoaded", function () {
       labelEl.style.width = `${size.width}mm`;
       labelEl.style.height = `${size.height}mm`;
 
+      const logos = logosBySize[sizeKey] || [null, null];
+      const logo1 = logos[0];
+      const logo2 = logos[1];
+      const logosHtml =
+        logo1 || logo2
+          ? `
+          <div class="label-logos">
+            ${logo1 ? `<img src="${escapeHtml(logo1)}" alt="Logo 1" class="label-logo" />` : ""}
+            ${logo2 ? `<img src="${escapeHtml(logo2)}" alt="Logo 2" class="label-logo" />` : ""}
+          </div>`
+          : "";
+
       labelEl.innerHTML = `
         <div class="label-inner">
-          <div class="label-logos">
-            <img
-              src="./assets/CMI-cc.png"
-              alt="Logo Centro Materno Infantil"
-              class="logo-cmi"
-            />
-            <img
-              src="./assets/Logo-Prefeitura.png"
-              alt="Logo Prefeitura"
-              class="logo-prefeitura"
-            />
-          </div>
+          ${logosHtml}
           <div class="label-text">
             <span>${escapeHtml(text)}</span>
           </div>

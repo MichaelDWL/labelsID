@@ -36,9 +36,6 @@
         </div>
     </header>
 
-    <section>
-
-    </section>
 
 
     <main id="home">
@@ -91,9 +88,29 @@
         <!-- Upload para etiqueta pequena -->
         <section class="upload" id="upload-sm" data-size="bin-sm">
             <div class="upload-grid">
-                <div class="upload-main">
+                <div class="upload-main-intro">
                     <h2 class="font-lg-bold c-tx-t">Upload da planilha - Etiqueta Pequena</h2>
                     <p class="font-sm c-tx-t">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 4,5 x 1,5 cm.</p>
+                </div>
+                <div class="upload-main-body">
+                    <div class="upload-logos" data-size="bin-sm">
+                        <h3 class="font-lg-bold c-tx-t">Logos da etiqueta (opcional)</h3>
+                        <p class="font-sm c-tx-q upload-logos-hint">Formato recomendado: <strong>PNG</strong> com fundo transparente.</p>
+                        <div class="upload-logos-fields">
+                            <div class="upload-logo-field">
+                                <label for="logo1-input-sm" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo </label>
+                                <input type="file" id="logo1-input-sm" accept=".png,image/png" />
+                                <span class="upload-logo-status" aria-live="polite"></span>
+                                <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 60×60 px</span>
+                            </div>
+                            <div class="upload-logo-field">
+                                <label for="logo2-input-sm" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo 2</label>
+                                <input type="file" id="logo2-input-sm" accept=".png,image/png" />
+                                <span class="upload-logo-status" aria-live="polite"></span>
+                                <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 60×60 px</span>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="btn">
                         <label for="excel-input-sm" class="btn-upload">Escolher arquivo Excel</label>
@@ -104,8 +121,11 @@
                     <div id="labels-container-sm" class="labels-grid">
                     </div>
                 </div>
-                <div class="pdf-preview-wrapper">
+                <div class="pdf-preview-title">
                     <h2 class="font-lg-bold c-tx-t">Pré-visualização - A4</h2>
+                    <p class="font-sm c-tx-q pdf-preview-intro">Abaixo é uma previsualização de exemplo das etiquetas em folha A4.</p>
+                </div>
+                <div class="pdf-preview-box">
                     <div id="pdf-preview-sm" class="pdf-preview-page"></div>
                 </div>
             </div>
@@ -114,9 +134,29 @@
         <!-- Upload para etiqueta média -->
         <section class="upload" id="upload-md" data-size="bin-md">
             <div class="upload-grid">
-                <div class="upload-main">
+                <div class="upload-main-intro">
                     <h2 class="font-lg-bold c-tx-t">Upload da planilha - Etiqueta Média</h2>
                     <p class="font-sm c-tx-t">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 6,5 x 2 cm.</p>
+                </div>
+                <div class="upload-main-body">
+                    <div class="upload-logos" data-size="bin-md">
+                        <h3 class="font-lg-bold c-tx-t">Logos da etiqueta (opcional)</h3>
+                        <p class="font-sm c-tx-q upload-logos-hint">Formato recomendado: <strong>PNG</strong> com fundo transparente.</p>
+                        <div class="upload-logos-fields">
+                            <div class="upload-logo-field">
+                                <label for="logo1-input-md" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo 1</label>
+                                <input type="file" id="logo1-input-md" accept=".png,image/png" />
+                                <span class="upload-logo-status" aria-live="polite"></span>
+                                <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 80×80 px</span>
+                            </div>
+                            <div class="upload-logo-field">
+                                <label for="logo2-input-md" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo 2</label>
+                                <input type="file" id="logo2-input-md" accept=".png,image/png" />
+                                <span class="upload-logo-status" aria-live="polite"></span>
+                                <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 80×80 px</span>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="btn">
                         <label for="excel-input-md" class="btn-upload">Escolher arquivo Excel</label>
@@ -127,8 +167,11 @@
                     <div id="labels-container-md" class="labels-grid">
                     </div>
                 </div>
-                <div class="pdf-preview-wrapper">
+                <div class="pdf-preview-title">
                     <h2 class="font-lg-bold c-tx-t">Pré-visualização - A4</h2>
+                    <p class="font-sm c-tx-q pdf-preview-intro">Abaixo é uma previsualização de exemplo das etiquetas em folha A4.</p>
+                </div>
+                <div class="pdf-preview-box">
                     <div id="pdf-preview-md" class="pdf-preview-page"></div>
                 </div>
             </div>
@@ -137,9 +180,29 @@
         <!-- Upload para placa -->
         <section class="upload" id="upload-placa" data-size="placa">
             <div class="upload-grid">
-                <div class="upload-main">
+                <div class="upload-main-intro">
                     <h2 class="font-lg-bold c-tx-t">Upload da planilha - Placa</h2>
                     <p class="font-sm c-tx-t">Selecione um arquivo Excel (.xlsx ou .xls). <br>Cada linha será impressa em etiquetas de 18 x 7 cm.</p>
+                </div>
+                <div class="upload-main-body">
+                    <div class="upload-logos" data-size="placa">
+                        <h3 class="font-lg-bold c-tx-t">Logos da etiqueta (opcional)</h3>
+                        <p class="font-sm c-tx-q upload-logos-hint">Formato recomendado: <strong>PNG</strong> com fundo transparente.</p>
+                        <div class="upload-logos-fields">
+                            <div class="upload-logo-field">
+                                <label for="logo1-input-placa" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo 1</label>
+                                <input type="file" id="logo1-input-placa" accept=".png,image/png" />
+                                <span class="upload-logo-status" aria-live="polite"></span>
+                                <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 150×80 px</span>
+                            </div>
+                            <div class="upload-logo-field">
+                                <label for="logo2-input-placa" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo 2</label>
+                                <input type="file" id="logo2-input-placa" accept=".png,image/png" />
+                                <span class="upload-logo-status" aria-live="polite"></span>
+                                <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 150×80 px</span>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="btn">
                         <label for="excel-input-placa" class="btn-upload">Escolher arquivo Excel</label>
@@ -150,8 +213,11 @@
                     <div id="labels-container-placa" class="labels-grid">
                     </div>
                 </div>
-                <div class="pdf-preview-wrapper">
+                <div class="pdf-preview-title">
                     <h2 class="font-lg-bold c-tx-t">Pré-visualização - A4</h2>
+                    <p class="font-sm c-tx-q pdf-preview-intro">Abaixo é uma previsualização de exemplo das etiquetas em folha A4.</p>
+                </div>
+                <div class="pdf-preview-box">
                     <div id="pdf-preview-placa" class="pdf-preview-page"></div>
                 </div>
             </div>
