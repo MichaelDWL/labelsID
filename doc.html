@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação — LabelsID</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/docs/doc.css">
+</head>
+
+<body class="doc-page">
+
+    <header id="header">
+        <div class="header">
+            <div>
+                <img class="logo" src="./assets/logo.png" alt="logo labels ID">
+            </div>
+            <nav class="nav">
+                <ul class="font-md-bold c-tx-q">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="doc.html" class="nav-active">Doc</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li><span class="version">v1</span></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="intro">
+            <h1 class="font-xl-bold c-tx-t">Documentação</h1>
+            <p class="font-sm c-tx-t">Tudo o que você precisa para criar etiquetas com o LabelsID.</p>
+            <!-- <a class="font-md-bold btn-start" href="#home">Começar <i class="fa-solid fa-chevron-right"></i></a> -->
+        </div>
+    </header>
+
+    <main class="doc-main">
+        <nav class="doc-nav" aria-label="Navegação na documentação">
+            <h2 class="doc-nav-title font-md-bold c-tx-t"><i class="fa-solid fa-list"></i> Nesta página</h2>
+            <ul>
+                <li><a href="#como-usar">Como usar</a></li>
+                <li><a href="#modelos">Modelos de etiqueta</a></li>
+                <li><a href="#planilha">Preparando a planilha</a></li>
+                <li><a href="#logos">Logos (imagens)</a></li>
+                <li><a href="#dicas">Dicas</a></li>
+            </ul>
+        </nav>
+
+        <div class="doc-content">
+            <section id="como-usar" class="doc-section">
+                <h2 class="doc-section-title font-lg-bold c-tx-t"><span class="doc-section-icon"><i class="fa-solid fa-play"></i></span> Como usar</h2>
+                <ol class="doc-steps font-sm c-tx-m">
+                    <li>
+                        <strong>Escolha o modelo de etiqueta</strong> — Pequena (4,5×1,5 cm), Média (6,5×2 cm) ou Grande/Placa (18×7 cm).
+                    </li>
+                    <li>
+                        <strong>Envie as logos (opcional)</strong> — Até 2 imagens em PNG por etiqueta. Faça isso <em>antes</em> de escolher o arquivo Excel; depois de enviar a planilha, as logos ficam bloqueadas.
+                    </li>
+                    <li>
+                        <strong>Selecione o arquivo Excel</strong> — Use o botão &quot;Escolher arquivo Excel&quot; e escolha um arquivo .xlsx ou .xls. Cada linha da planilha vira uma etiqueta.
+                    </li>
+                    <li>
+                        <strong>Gere o PDF</strong> — Clique em &quot;Gerar PDF das etiquetas&quot;. O arquivo será baixado com as etiquetas prontas para impressão em folha A4.
+                    </li>
+                </ol>
+            </section>
+
+            <section id="modelos" class="doc-section">
+                <h2 class="doc-section-title font-lg-bold c-tx-t"><span class="doc-section-icon"><i class="fa-solid fa-ruler-combined"></i></span> Modelos de etiqueta</h2>
+                <p class="doc-lead font-sm c-tx-q">Escolha o tamanho conforme o uso: bins menores, médios ou placas/avisos.</p>
+                <div class="doc-cards">
+                    <article class="doc-card">
+                        <div class="doc-card-header doc-card-header--sm font-md-bold">Etiqueta pequena</div>
+                        <div class="doc-card-body">
+                            <p class="font-sm"><strong>Dimensão:</strong> 4,5 × 1,5 cm</p>
+                            <p class="font-sm">Ideal para bins menores (ex.: nº3). Várias etiquetas por folha A4.</p>
+                        </div>
+                    </article>
+                    <article class="doc-card">
+                        <div class="doc-card-header doc-card-header--md font-md-bold">Etiqueta média</div>
+                        <div class="doc-card-body">
+                            <p class="font-sm"><strong>Dimensão:</strong> 6,5 × 2 cm</p>
+                            <p class="font-sm">Para bins a partir do nº5 e identificações médias.</p>
+                        </div>
+                    </article>
+                    <article class="doc-card">
+                        <div class="doc-card-header doc-card-header--lg font-md-bold">Etiqueta grande (placa)</div>
+                        <div class="doc-card-body">
+                            <p class="font-sm"><strong>Dimensão:</strong> 18 × 7 cm</p>
+                            <p class="font-sm">Para placas, avisos e áreas que precisam de maior destaque.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="planilha" class="doc-section">
+                <h2 class="doc-section-title font-lg-bold c-tx-t"><span class="doc-section-icon"><i class="fa-solid fa-file-excel"></i></span> Preparando a planilha</h2>
+                <ul class="doc-list font-sm c-tx-m">
+                    <li><strong>Formato:</strong> Excel (.xlsx ou .xls). Use a primeira aba da planilha.</li>
+                    <li><strong>Uma linha = uma etiqueta.</strong> A primeira linha pode ser o cabeçalho; se quiser que ela vire etiqueta, deixe como as demais.</li>
+                    <li><strong>Várias colunas:</strong> o conteúdo das células da mesma linha é unido com &quot; - &quot; (espaço, traço, espaço). Ex.: coluna A &quot;Setor&quot; e coluna B &quot;Prateleira 2&quot; geram a etiqueta: <em>Setor - Prateleira 2</em>.</li>
+                    <li>Células vazias são ignoradas. Linhas totalmente vazias não geram etiqueta.</li>
+                </ul>
+                <div class="doc-example">
+                    <p class="doc-example-title font-sm-bold c-tx-t">Exemplo de planilha</p>
+                    <table class="doc-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Material A</td>
+
+                            </tr>
+                            <tr>
+                                <td>Material B</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="doc-example-caption font-sm c-tx-q">Resultado: etiqueta 1 = &quot;Material A &quot;; etiqueta 2 = &quot;Material B&quot;.</p>
+                </div>
+            </section>
+
+            <section id="logos" class="doc-section">
+                <h2 class="doc-section-title font-lg-bold c-tx-t"><span class="doc-section-icon"><i class="fa-solid fa-image"></i></span> Logos (imagens)</h2>
+                <ul class="doc-list font-sm c-tx-m">
+                    <li><strong>Formato:</strong> PNG (recomendado com fundo transparente).</li>
+                    <li><strong>Quantidade:</strong> até 2 logos por etiqueta.</li>
+                    <li><strong>Ordem:</strong> envie as logos <em>antes</em> de selecionar o arquivo Excel. Depois que a planilha for escolhida, o envio de logos fica bloqueado para aquela seção.</li>
+                </ul>
+                <p class="doc-lead font-sm c-tx-q">Tamanhos recomendados para boa nitidez na impressão:</p>
+                <div class="doc-table-wrapper">
+                    <table class="doc-table doc-table--highlight">
+                        <thead>
+                            <tr>
+                                <th class="font-sm-bold c-tx-t">Modelo de etiqueta</th>
+                                <th class="font-sm-bold c-tx-t">Tamanho recomendado (pixels)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-sm">Pequena (4,5×1,5 cm)</td>
+                                <td class="font-sm"><strong>60 × 60 px</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="font-sm">Média (6,5×2 cm)</td>
+                                <td class="font-sm"><strong>80 × 80 px</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="font-sm">Grande / Placa (18×7 cm)</td>
+                                <td class="font-sm"><strong>150 × 80 px</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="doc-note font-sm c-tx-q"><i class="fa-solid fa-circle-info"></i> Imagens maiores podem ser redimensionadas pelo navegador. Use PNG com fundo transparente para melhor resultado.</p>
+            </section>
+
+            <section id="dicas" class="doc-section">
+                <h2 class="doc-section-title font-lg-bold c-tx-t"><span class="doc-section-icon"><i class="fa-solid fa-lightbulb"></i></span> Dicas</h2>
+                <ul class="doc-tips font-sm c-tx-m">
+                    <li><i class="fa-solid fa-check"></i> Prepare as logos em PNG e envie primeiro; só depois selecione o Excel.</li>
+                    <li><i class="fa-solid fa-check"></i> Na planilha, evite textos muito longos em uma única célula para caber bem na etiqueta.</li>
+                    <li><i class="fa-solid fa-check"></i> O PDF é gerado em tamanho real para impressão em folha A4; confira a pré-visualização antes de imprimir.</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div id="contato" class="footer-contact c-tx-white">
+            <div class="footer-brand">
+                <img class="logo" src="./assets/logo.png" alt="Logo LabelsID">
+                <p class="creditos font-sm c-tx-q">
+                    Desenvolvido por
+                    <a class="font-sm-bold c-tx-t" href="https://www.linkedin.com/in/michaeldwl" target="_blank">Michael Douglas</a>
+                </p>
+                <p class="font-sm footer-rights">
+                    © <span id="footer-year">2026</span> LabelsID. Todos os direitos reservados.
+                </p>
+            </div>
+            <div class="footer-extra">
+                <h3 class="font-md-bold c-tx-q">Contato</h3>
+                <ul class="footer-social c-tx-q">
+                    <li>
+                        <a href="mailto:michaeldouglas.devs@gmail.com" aria-label="E-mail">
+                            <i class="fa-solid fa-square-envelope"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/michaeldwl" target="_blank" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.github.com/michaeldwl" target="_blank" aria-label="GitHub">
+                            <i class="fa-brands fa-square-github"></i>
+                        </a>
+                    </li>
+                </ul>
+                <p class="font-sm footer-hint">
+                    Sugestões ou feedbacks? Fique à vontade para entrar em contato.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>

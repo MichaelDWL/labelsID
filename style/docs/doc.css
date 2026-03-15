@@ -1,0 +1,312 @@
+/* Página de documentação — LabelsID */
+
+.doc-page {
+  scroll-behavior: smooth;
+}
+
+.doc-intro {
+  padding: 2rem 1.25rem;
+}
+
+.doc-intro h1 {
+  margin-bottom: 0.5rem;
+}
+
+.doc-main {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .doc-main {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-nav {
+    position: static;
+  }
+}
+
+/* Navegação lateral */
+.doc-nav {
+  position: sticky;
+  top: 1.5rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.12);
+}
+
+.doc-nav-title {
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.doc-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.doc-nav li {
+  margin-bottom: 0.35rem;
+}
+
+.doc-nav a {
+  display: block;
+  padding: 0.45rem 0.6rem;
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--text-sec);
+  text-decoration: none;
+  border-radius: 8px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.doc-nav a:hover {
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--text-terc);
+}
+
+.nav-active {
+  color: var(--primary) !important;
+  font-weight: 600;
+}
+
+/* Conteúdo */
+.doc-content {
+  min-width: 0;
+}
+
+.doc-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  scroll-margin-top: 1rem;
+}
+
+.doc-section:last-of-type {
+  border-bottom: none;
+}
+
+.doc-section-title {
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.doc-section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.doc-lead {
+  margin: 0 0 1.25rem 0;
+  line-height: 1.5;
+}
+
+.doc-steps {
+  margin: 0;
+  padding-left: 1.5rem;
+  line-height: 1.7;
+}
+
+.doc-steps li {
+  margin-bottom: 0.75rem;
+}
+
+.doc-list {
+  margin: 0 0 1.25rem 0;
+  padding-left: 1.5rem;
+  line-height: 1.7;
+}
+
+.doc-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Cards de modelos */
+.doc-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.doc-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.doc-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.doc-card-header {
+  padding: 1rem 1.25rem;
+  color: #fff;
+}
+
+.doc-card-header--sm {
+  background: var(--plan-small);
+}
+
+.doc-card-header--md {
+  background: var(--plan-medium);
+}
+
+.doc-card-header--lg {
+  background: var(--plan-large);
+}
+
+.doc-card-body {
+  padding: 1.25rem;
+}
+
+.doc-card-body p {
+  margin: 0 0 0.5rem 0;
+}
+
+.doc-card-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Exemplo e tabelas */
+.doc-example {
+  margin: 1.25rem 0;
+  padding: 1.25rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.doc-example-title {
+  margin: 0 0 1rem 0;
+}
+
+.doc-example-caption {
+  margin: 1rem 0 0 0;
+  font-style: italic;
+}
+
+.doc-table-wrapper {
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+}
+
+.doc-table th,
+.doc-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.doc-table th {
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--text-terc);
+  font-weight: 600;
+}
+
+.doc-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.doc-table tbody tr:hover {
+  background: rgba(59, 130, 246, 0.03);
+}
+
+.doc-table--highlight tbody td:last-child {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Nota */
+.doc-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 1.25rem 0 0 0;
+  padding: 1rem 1.25rem;
+  background: rgba(59, 130, 246, 0.06);
+  border-radius: 10px;
+  border-left: 4px solid var(--primary);
+}
+
+.doc-note i {
+  margin-top: 0.15rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Dicas */
+.doc-tips {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.doc-tips li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.doc-tips li i {
+  color: #059669;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.doc-tips li:last-child {
+  margin-bottom: 0;
+}
+
+/* Ajuste do header na doc: link do logo para index */
+.doc-page .header .logo {
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .doc-main {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-nav {
+    position: static;
+  }
+}
