@@ -12,7 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9731385717289136" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -22,12 +21,12 @@
             <div>
                 <img class="logo" src="./assets/logo.png" alt="logo labels ID">
             </div>
-            <nav class="nav">
+            <nav class="nav js-nav">
                 <ul class="font-md-bold c-tx-q">
                     <li><a href="#home" class="nav-active">Início</a></li>
                     <li><a href="/doc">Doc</a></li>
                     <li><a href="#contato">Contato</a></li>
-                    <li><span class="version">v1</span></li>
+                    <li><span class="version">v1.1</span></li>
                 </ul>
             </nav>
         </div>
@@ -102,13 +101,13 @@
                         <div class="upload-logos-fields">
                             <div class="upload-logo-field">
                                 <label for="logo1-input-sm" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo </label>
-                                <input type="file" id="logo1-input-sm" accept=".png,image/png" />
+                                <input type="file" id="logo1-input-sm" accept="image/*" />
                                 <span class="upload-logo-status" aria-live="polite"></span>
                                 <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 60×60 px</span>
                             </div>
                             <div class="upload-logo-field">
                                 <label for="logo2-input-sm" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo 2</label>
-                                <input type="file" id="logo2-input-sm" accept=".png,image/png" />
+                                <input type="file" id="logo2-input-sm" accept="image/*" />
                                 <span class="upload-logo-status" aria-live="polite"></span>
                                 <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 60×60 px</span>
                             </div>
@@ -148,13 +147,13 @@
                         <div class="upload-logos-fields">
                             <div class="upload-logo-field">
                                 <label for="logo1-input-md" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo 1</label>
-                                <input type="file" id="logo1-input-md" accept=".png,image/png" />
+                                <input type="file" id="logo1-input-md" accept="image/*" />
                                 <span class="upload-logo-status" aria-live="polite"></span>
                                 <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 80×80 px</span>
                             </div>
                             <div class="upload-logo-field">
                                 <label for="logo2-input-md" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo 2</label>
-                                <input type="file" id="logo2-input-md" accept=".png,image/png" />
+                                <input type="file" id="logo2-input-md" accept="image/*" />
                                 <span class="upload-logo-status" aria-live="polite"></span>
                                 <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 80×80 px</span>
                             </div>
@@ -194,13 +193,13 @@
                         <div class="upload-logos-fields">
                             <div class="upload-logo-field">
                                 <label for="logo1-input-placa" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo 1</label>
-                                <input type="file" id="logo1-input-placa" accept=".png,image/png" />
+                                <input type="file" id="logo1-input-placa" accept="image/*" />
                                 <span class="upload-logo-status" aria-live="polite"></span>
                                 <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 150×80 px</span>
                             </div>
                             <div class="upload-logo-field">
                                 <label for="logo2-input-placa" class="btn-upload btn-upload--logo"><i class="fa-solid fa-image"></i> Logo 2</label>
-                                <input type="file" id="logo2-input-placa" accept=".png,image/png" />
+                                <input type="file" id="logo2-input-placa" accept="image/*" />
                                 <span class="upload-logo-status" aria-live="polite"></span>
                                 <span class="font-sm c-tx-q upload-logo-recommended">Tamanho recomendado: 150×80 px</span>
                             </div>
@@ -232,6 +231,19 @@
             <h2 class="modal-title">Aviso</h2>
             <p class="font-sm modal-message" id="modal-message"></p>
             <button type="button" class="modal-button" id="modal-close">OK</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="label-edit-modal" aria-hidden="true">
+        <div class="modal modal--wide" role="dialog" aria-modal="true" aria-labelledby="label-edit-title">
+            <h2 class="modal-title" id="label-edit-title">Editar etiqueta</h2>
+            <label class="font-sm c-tx-q modal-label" for="label-edit-input">Texto</label>
+            <textarea id="label-edit-input" class="modal-input" rows="3" placeholder="Digite o texto da etiqueta"></textarea>
+            <div class="modal-actions">
+                <button type="button" class="modal-button modal-button--secondary" id="label-edit-cancel">Cancelar</button>
+                <button type="button" class="modal-button" id="label-edit-save">Salvar</button>
+            </div>
+            <p class="font-sm c-tx-q modal-hint">Dica: pressione <strong>Ctrl+Enter</strong> para salvar, ou <strong>Esc</strong> para cancelar.</p>
         </div>
     </div>
 
