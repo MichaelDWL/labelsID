@@ -44,6 +44,15 @@ document.addEventListener("DOMContentLoaded", function () {
     placa: [null, null],
   };
 
+  // estado do modal de edição de etiqueta
+  const labelEditState = {
+    isOpen: false,
+    activeSizeKey: null,
+    activeContainerId: null,
+    activePreviewId: null,
+    activeTextEl: null,
+  };
+
   function getSize(sizeKey) {
     return SIZES[sizeKey] || SIZES["bin-md"];
   }
@@ -73,6 +82,93 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  const labelEditOverlay = document.getElementById("label-edit-modal");
+  const labelEditInput = document.getElementById("label-edit-input");
+  const labelEditCancel = document.getElementById("label-edit-cancel");
+  const labelEditSave = document.getElementById("label-edit-save");
+
+  function openLabelEditModal({ sizeKey, containerId, previewId, textEl }) {
+    if (!labelEditOverlay || !labelEditInput) return;
+
+    labelEditState.isOpen = true;
+    labelEditState.activeSizeKey = sizeKey;
+    labelEditState.activeContainerId = containerId;
+    labelEditState.activePreviewId = previewId;
+    labelEditState.activeTextEl = textEl;
+
+    labelEditInput.value = (textEl && textEl.textContent) || "";
+    labelEditOverlay.classList.add("modal-overlay--visible");
+
+    window.setTimeout(() => {
+      labelEditInput.focus();
+      labelEditInput.select();
+    }, 0);
+  }
+
+  function closeLabelEditModal() {
+    if (!labelEditOverlay) return;
+    labelEditOverlay.classList.remove("modal-overlay--visible");
+
+    labelEditState.isOpen = false;
+    labelEditState.activeSizeKey = null;
+    labelEditState.activeContainerId = null;
+    labelEditState.activePreviewId = null;
+    labelEditState.activeTextEl = null;
+  }
+
+  if (labelEditOverlay) {
+    labelEditOverlay.addEventListener("click", (event) => {
+      if (event.target === labelEditOverlay) closeLabelEditModal();
+    });
+  }
+
+  if (labelEditCancel) {
+    labelEditCancel.addEventListener("click", () => closeLabelEditModal());
+  }
+
+  if (labelEditSave) {
+    labelEditSave.addEventListener("click", async () => {
+      if (!labelEditState.activeTextEl || !labelEditInput) {
+        closeLabelEditModal();
+        return;
+      }
+
+      const newText = String(labelEditInput.value || "").trim();
+      if (!newText) {
+        showModal("Digite um texto válido para a etiqueta.");
+        return;
+      }
+
+      labelEditState.activeTextEl.textContent = newText;
+
+      const { activeSizeKey, activeContainerId, activePreviewId } =
+        labelEditState;
+      closeLabelEditModal();
+
+      if (activeSizeKey && activeContainerId && activePreviewId) {
+        await updatePreviewFromLabels(
+          activeSizeKey,
+          activeContainerId,
+          activePreviewId,
+        );
+      }
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (!labelEditState.isOpen) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeLabelEditModal();
+      return;
+    }
+
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+      if (labelEditSave) labelEditSave.click();
+    }
+  });
 
   const selectButtons = document.querySelectorAll(".btn-select");
   const uploadSections = document.querySelectorAll(".upload");
@@ -127,6 +223,9 @@ document.addEventListener("DOMContentLoaded", function () {
         handleGeneratePdf(sizeKey, cfg.containerId, cfg.previewId),
       );
     }
+
+    // habilita botão de edição (pincel) para etiquetas
+    enableLabelEditButtons(sizeKey, cfg.containerId, cfg.previewId);
 
     if (logo1Input) {
       logo1Input.addEventListener("change", (e) =>
@@ -199,6 +298,24 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     reader.readAsArrayBuffer(file);
+  }
+
+  function enableLabelEditButtons(sizeKey, containerId, previewId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.addEventListener("click", (event) => {
+      const btn = event.target.closest(".label-edit-btn");
+      if (!btn) return;
+
+      const labelEl = btn.closest(".label-item");
+      if (!labelEl) return;
+
+      const textEl = labelEl.querySelector(".label-text-value");
+      if (!textEl) return;
+
+      openLabelEditModal({ sizeKey, containerId, previewId, textEl });
+    });
   }
 
   function lockLogoUploads(sizeKey) {
@@ -424,9 +541,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       labelEl.innerHTML = `
         <div class="label-inner">
+          <button type="button" class="label-edit-btn" aria-label="Editar etiqueta">
+            <i class="fa-solid fa-paintbrush"></i>
+          </button>
           ${logosHtml}
           <div class="label-text">
-            <span>${escapeHtml(text)}</span>
+            <span class="label-text-value">${escapeHtml(text)}</span>
           </div>
         </div>
       `;

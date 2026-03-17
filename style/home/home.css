@@ -311,6 +311,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: visible;
 }
 
 .label-inner {
@@ -344,6 +346,25 @@
 .label-text span {
   white-space: normal;
   display: inline-block;
+}
+
+.label-edit-btn {
+  position: absolute;
+  right: -34px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.label-edit-btn:hover {
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
 /* Ajustes específicos para etiqueta pequena (bin-sm) */
@@ -386,11 +407,8 @@
   font-weight: 800;
 }
 
-/* Esconder a visualização da placa em tamanhos menores */
+/* Ajustes para visualização da placa em tamanhos menores */
 @media (max-width: 800px) {
-  .label-item--placa {
-    display: none;
-  }
   .labels-grid {
     overflow-y: auto;
     max-height: 310px;

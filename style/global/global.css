@@ -66,6 +66,10 @@ main {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
 }
 
+.modal.modal--wide {
+  max-width: 520px;
+}
+
 .modal-title {
   font-size: 1.25rem;
   margin-bottom: 1.25rem;
@@ -82,7 +86,7 @@ main {
   align-self: flex-end;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
+  padding: 0.5rem 0.75rem;
   background-color: #2563eb;
   color: #fff;
   border-radius: 4px;
@@ -92,6 +96,48 @@ main {
   transition:
     background-color 0.15s ease,
     transform 0.1s ease;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal-button.modal-button--secondary {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.modal-button.modal-button--secondary:hover {
+  background-color: #d1d5db;
+}
+
+.modal-label {
+  margin-bottom: 0.35rem;
+}
+
+.modal-input {
+  width: 100%;
+  resize: vertical;
+  min-height: 48px;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+
+.modal-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+.modal-hint {
+  margin-top: 0.75rem;
 }
 
 .modal-button:hover {

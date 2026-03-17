@@ -26,7 +26,7 @@
                     <li><a href="#home" class="nav-active">Início</a></li>
                     <li><a href="/doc">Doc</a></li>
                     <li><a href="#contato">Contato</a></li>
-                    <li><span class="version">v1</span></li>
+                    <li><span class="version">v1.1</span></li>
                 </ul>
             </nav>
         </div>
@@ -231,6 +231,19 @@
             <h2 class="modal-title">Aviso</h2>
             <p class="font-sm modal-message" id="modal-message"></p>
             <button type="button" class="modal-button" id="modal-close">OK</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="label-edit-modal" aria-hidden="true">
+        <div class="modal modal--wide" role="dialog" aria-modal="true" aria-labelledby="label-edit-title">
+            <h2 class="modal-title" id="label-edit-title">Editar etiqueta</h2>
+            <label class="font-sm c-tx-q modal-label" for="label-edit-input">Texto</label>
+            <textarea id="label-edit-input" class="modal-input" rows="3" placeholder="Digite o texto da etiqueta"></textarea>
+            <div class="modal-actions">
+                <button type="button" class="modal-button modal-button--secondary" id="label-edit-cancel">Cancelar</button>
+                <button type="button" class="modal-button" id="label-edit-save">Salvar</button>
+            </div>
+            <p class="font-sm c-tx-q modal-hint">Dica: pressione <strong>Ctrl+Enter</strong> para salvar, ou <strong>Esc</strong> para cancelar.</p>
         </div>
     </div>
 
