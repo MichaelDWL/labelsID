@@ -109,8 +109,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const cfg = UPLOADS[sizeKey];
     const input = document.getElementById(cfg.inputId);
     const pdfButton = document.getElementById(cfg.pdfBtnId);
-    const logo1Input = cfg.logo1InputId ? document.getElementById(cfg.logo1InputId) : null;
-    const logo2Input = cfg.logo2InputId ? document.getElementById(cfg.logo2InputId) : null;
+    const logo1Input = cfg.logo1InputId
+      ? document.getElementById(cfg.logo1InputId)
+      : null;
+    const logo2Input = cfg.logo2InputId
+      ? document.getElementById(cfg.logo2InputId)
+      : null;
 
     if (input) {
       input.addEventListener("change", (event) =>
@@ -149,8 +153,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (statusEl) statusEl.textContent = "";
       return;
     }
-    if (file.type !== "image/png") {
-      showModal("Selecione uma imagem no formato PNG (recomendado fundo transparente).");
+    if (!file.type || !file.type.startsWith("image/")) {
+      showModal(
+        "Selecione um arquivo de imagem. Formato recomendado: PNG com fundo transparente.",
+      );
       input.value = "";
       return;
     }
@@ -497,4 +503,23 @@ document.addEventListener("DOMContentLoaded", function () {
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
   }
+
+  function scrollSuave() {
+    const linksInternos = document.querySelectorAll(".js-nav a[href^='#']");
+
+    function scrollToSection(event) {
+      event.preventDefault();
+      const href = event.currentTarget.getAttribute("href");
+      const section = document.querySelector(href);
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
+    linksInternos.forEach((link) => {
+      link.addEventListener("click", scrollToSection);
+    });
+  }
+  scrollSuave();
 });
