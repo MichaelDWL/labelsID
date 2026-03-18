@@ -69,9 +69,9 @@ O **LabelsID** é uma aplicação web que gera etiquetas em PDF a partir de um a
    npx serve .
    ```
 
-   Ou abra o `index.html` diretamente no navegador (algumas funcionalidades podem depender de um servidor por causa de CORS/arquivos).
+   **Importante:** use sempre um servidor local. Os links usam caminhos absolutos (`/style/`, `/js/`, etc.) e o gerador depende de módulos ES.
 
-3. Acesse no navegador: `http://localhost:3000` (ou a porta que o `serve` indicar).
+3. Acesse: `http://localhost:3000` — rotas sem `.html`: `/doc/`, `/privacidade/`, `/termos/`, `/sobre/`.
 
 ---
 
@@ -91,19 +91,32 @@ A documentação de uso está na própria aplicação, no menu **Doc**, e inclui
 
 ```
 labelsID/
-├── index.html          # Página principal (gerador de etiquetas)
-├── doc.html            # Página de documentação
+├── index.html              # /
+├── doc/index.html          # /doc/
+├── privacidade/index.html  # /privacidade/
+├── termos/index.html       # /termos/
+├── sobre/index.html        # /sobre/
+├── _redirects              # Netlify: redireciona *.html antigo
+├── vercel.json             # Vercel: idem
+├── .htaccess               # Apache: idem
 ├── js/
-│   └── script.js       # Lógica de upload, renderização e PDF
+│   ├── app.js                 # Entrada (módulo ES)
+│   ├── config/constants.js   # Tamanhos e IDs de upload
+│   ├── utils/helpers.js       # escapeHtml, getSize
+│   ├── ui/                    # Modais (app + edição de etiqueta)
+│   ├── services/pdf.js        # Pré-visualização e geração de PDF
+│   └── features/              # Upload/planilha, seleção de modelo, nav
 ├── style/
-│   ├── style.css       # Entrada principal de estilos
-│   ├── global/         # Header, footer, global
-│   ├── home/           # Estilos da home/upload
-│   ├── docs/           # Estilos da documentação
-│   └── util/           # Cores, tipografia, botões, etc.
-├── assets/             # Logo e screenshots
-└── docs/               # Documentação e página de licença
+│   ├── style.css              # Folha principal (@import de tudo)
+│   ├── util/                  # color, tipografia, bin (cards), buttons
+│   ├── global/                # reset-base, main-section, modal, header, footer
+│   ├── home/                  # layout, upload-logos, labels
+│   └── docs/                  # doc.css
+├── assets/
+└── docs/
 ```
+
+**Produção:** o site assume domínio na **raiz** (ex.: `labelsid.com.br`). Se publicar em **subpasta** (`usuario.github.io/repo/`), será preciso ajustar `<base href="...">` ou os caminhos. **AdSense:** URL da política → `https://seu-dominio/privacidade/`.
 
 ---
 

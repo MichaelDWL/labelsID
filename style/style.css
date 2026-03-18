@@ -1,16 +1,17 @@
-/* Util */
-@import "./util/bin.css";
-@import "./util/util.css";
+/**
+ * LabelsID — entrada principal de estilos
+ */
 @import "./util/color.css";
 @import "./util/tipografia.css";
+@import "./util/bin.css";
+@import "./util/buttons.css";
 
-/* Global */
 @import "./global/global.css";
 @import "./global/header.css";
 @import "./global/footer.css";
 
-/* Home */
-@import "./home/home.css";
+@import "./home/home-layout.css";
+@import "./home/home-upload-logos.css";
+@import "./home/home-labels.css";
 
-/* Doc */
 @import "./docs/doc.css";

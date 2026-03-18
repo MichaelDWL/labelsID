@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistema web para geração automática de etiquetas para bins, prateleiras e identificação de áreas.">
     <title>Labels ID - Documentação</title>
+    <meta name="description" content="Sistema web para geração automática de etiquetas para bins, prateleiras e identificação de áreas.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./style/style.css">
-    <link rel="stylesheet" href="./style/docs/doc.css">
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9731385717289136" crossorigin="anonymous"></script>
 </head>
 
@@ -18,14 +17,15 @@
     <header id="header">
         <div class="header">
             <div>
-                <img class="logo" src="./assets/logo.png" alt="logo labels ID">
+                <img class="logo" src="/assets/logo.png" alt="logo labels ID">
             </div>
             <nav class="nav">
                 <ul class="font-md-bold c-tx-q">
                     <li><a href="/">Início</a></li>
-                    <li><a href="/doc" class="nav-active">Doc</a></li>
-                    <li><a href="index.html#contato">Contato</a></li>
-                    <li><span class="version">v1.1</span></li>
+                    <li><a href="/doc/" class="nav-active">Doc</a></li>
+                    <li><a href="/sobre/">Sobre</a></li>
+                    <li><a href="/#contato">Contato</a></li>
+                    <li><span class="version">v1.5</span></li>
                 </ul>
             </nav>
         </div>
@@ -175,11 +175,18 @@
     <footer>
         <div id="contato" class="footer-contact c-tx-white">
             <div class="footer-brand">
-                <img class="logo" src="./assets/logo.png" alt="Logo LabelsID">
+                <img class="logo" src="/assets/logo.png" alt="Logo LabelsID">
                 <p class="creditos font-sm c-tx-q">
                     Desenvolvido por
                     <a class="font-sm-bold c-tx-t" href="https://www.linkedin.com/in/michaeldwl" target="_blank">Michael Douglas</a>
                 </p>
+                <nav class="footer-legal font-sm" aria-label="Links legais">
+                    <a href="/privacidade/" class="c-tx-q">Política de Privacidade</a>
+                    <span class="footer-legal-sep" aria-hidden="true"> · </span>
+                    <a href="/termos/" class="c-tx-q">Termos de Uso</a>
+                    <span class="footer-legal-sep" aria-hidden="true"> · </span>
+                    <a href="/sobre/" class="c-tx-q">Sobre</a>
+                </nav>
                 <p class="font-sm footer-rights">
                     © <span id="footer-year">2026</span> LabelsID. Todos os direitos reservados.
                 </p>

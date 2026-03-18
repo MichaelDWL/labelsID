@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: space-between;
 
-  gap: 1.25rem;
-  padding: 2rem;
+  gap: 1.5rem;
+  padding: 2rem 2rem 2.25rem;
 
   max-width: 400px;
   background-color: var(--card-bg);
@@ -39,12 +39,17 @@
 
 .bin-header h2 {
   font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+.container-bin > p.font-sm {
+  line-height: 1.65;
 }
 
 .bin-size {
   display: flex;
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--text-sec);
   padding: 1.25rem;
   border-radius: 2px;
 }

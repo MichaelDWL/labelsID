@@ -82,6 +82,32 @@ footer {
   opacity: 0.85;
 }
 
+/* Links legais (AdSense / transparência) */
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.35rem;
+  margin: -0.35rem 0 0.25rem 0;
+  max-width: 100%;
+}
+
+.footer-legal a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 0.95;
+}
+
+.footer-legal a:hover {
+  opacity: 1;
+  color: var(--text-terc, #e2e8f0);
+}
+
+.footer-legal-sep {
+  opacity: 0.5;
+  user-select: none;
+}
+
 .footer-nav,
 .footer-extra {
   display: flex;

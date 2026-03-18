@@ -1,3 +1,6 @@
+/* Botões e grupos de ação — LabelsID */
+
+/* Linha de ações (Excel + Gerar PDF) */
 .btn {
   display: flex;
   align-items: stretch;
@@ -28,16 +31,6 @@
     width: 100%;
   }
 }
-
-/* .btn-upload {
-  display: inline-block;
-  padding: 1.25rem;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-} */
 
 .btn-select {
   display: inline-block;
@@ -100,4 +93,51 @@
 
 .btn-upload:hover {
   background-color: #0069d9;
+}
+
+/* Botão estilo “upload” para logos (secundário) */
+.btn-upload--logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  cursor: pointer;
+  width: 100%;
+  color: var(--text-terc);
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 8px;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.btn-upload--logo:hover {
+  color: var(--primary);
+  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+  border-color: var(--primary);
+}
+
+.btn-upload--logo:active {
+  transform: scale(0.98);
+}
+
+.btn-upload--logo i {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.upload-logo-field--uploaded .btn-upload--logo {
+  color: #059669;
+  background: rgba(5, 150, 105, 0.08);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+.upload-logo-field--uploaded .btn-upload--logo:hover {
+  color: #047857;
+  background: rgba(5, 150, 105, 0.12);
+  border-color: #059669;
 }

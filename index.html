@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <meta name="description" content="Sistema web para geração automática de etiquetas para bins, prateleiras e identificação de áreas.">
     <title>Labels ID</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <meta name="description" content="Sistema web para geração automática de etiquetas para bins, prateleiras e identificação de áreas.">
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -20,14 +20,15 @@
     <header id="header">
         <div class="header">
             <div>
-                <img class="logo" src="./assets/logo.png" alt="logo labels ID">
+                <img class="logo" src="/assets/logo.png" alt="logo labels ID">
             </div>
             <nav class="nav js-nav">
                 <ul class="font-md-bold c-tx-q">
                     <li><a href="#home" class="nav-active">Início</a></li>
-                    <li><a href="/doc">Doc</a></li>
+                    <li><a href="/doc/">Doc</a></li>
+                    <li><a href="/sobre/">Sobre</a></li>
                     <li><a href="#contato">Contato</a></li>
-                    <li><span class="version">v1.1</span></li>
+                    <li><span class="version">v1.5</span></li>
                 </ul>
             </nav>
         </div>
@@ -252,11 +253,18 @@
 
         <div id="contato" class="footer-contact c-tx-white">
             <div class="footer-brand">
-                <img class="logo" src="./assets/logo.png" alt="Logo LabelsID">
+                <img class="logo" src="/assets/logo.png" alt="Logo LabelsID">
                 <p class="creditos font-sm c-tx-q">
                     Desenvolvido por
                     <a class="font-sm-bold c-tx-t" href="https://www.linkedin.com/in/michaeldwl" target="_blank">Michael Douglas</a>
                 </p>
+                <nav class="footer-legal font-sm" aria-label="Links legais">
+                    <a href="/privacidade/" class="c-tx-q">Política de Privacidade</a>
+                    <span class="footer-legal-sep" aria-hidden="true"> · </span>
+                    <a href="/termos/" class="c-tx-q">Termos de Uso</a>
+                    <span class="footer-legal-sep" aria-hidden="true"> · </span>
+                    <a href="/sobre/" class="c-tx-q">Sobre</a>
+                </nav>
                 <p class="font-sm footer-rights">
                     © <span id="footer-year">2026</span> LabelsID. Todos os direitos reservados.
                 </p>
@@ -296,7 +304,7 @@
         </div>
     </footer>
 
-    <script src="./js/script.js"></script>
+    <script type="module" src="/js/app.js"></script>
 
 </body>
 

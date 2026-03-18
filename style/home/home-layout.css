@@ -1,0 +1,210 @@
+/* Home: grade de modelos, shell de upload e pré-visualização PDF */
+
+main > h1.font-xl-bold {
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+  line-height: 1.35;
+  max-width: min(100%, 36ch);
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.upload {
+  display: none;
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.upload.upload--active {
+  display: block;
+}
+
+.upload h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.upload h3 {
+  margin-top: 0;
+  margin-bottom: 0.85rem;
+}
+
+.upload p {
+  color: #555;
+  line-height: 1.65;
+  max-width: 62ch;
+}
+
+.upload p + p {
+  margin-top: 0.85rem;
+}
+
+.upload-main-intro h2 {
+  margin-bottom: 1rem;
+}
+
+.upload-main-intro p + p {
+  margin-top: 0.75rem;
+}
+
+.upload input[type="file"] {
+  display: none;
+}
+
+.labels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70mm, 1fr));
+  gap: 1.25rem;
+}
+
+.upload[data-size="bin-sm"] .labels-grid {
+  grid-template-columns: repeat(auto-fill, minmax(55mm, 1fr));
+  gap: 1.25rem;
+}
+
+.upload-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+}
+
+.upload-main-intro {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.upload-main-body {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.pdf-preview-title {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.pdf-preview-box {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  min-width: 0;
+}
+
+.pdf-preview-title h2 {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.pdf-preview-intro {
+  max-width: 40ch;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.pdf-preview-page {
+  width: 100%;
+  aspect-ratio: 210 / 297;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdf-preview-page img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.upload[data-size="placa"] .labels-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 1140px) {
+  .upload-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+
+  .upload-main-intro {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .upload-main-body {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .pdf-preview-title {
+    grid-column: 1;
+    grid-row: 3;
+    min-width: 0;
+  }
+
+  .pdf-preview-box {
+    grid-column: 1;
+    grid-row: 4;
+    min-width: 0;
+  }
+
+  .pdf-preview-intro {
+    max-width: none;
+  }
+
+  .labels-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(70mm, 100%), 1fr));
+  }
+
+  .upload[data-size="bin-sm"] .labels-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(55mm, 100%), 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .upload {
+    padding: 1rem;
+  }
+
+  .upload-main-intro h2,
+  .pdf-preview-title h2 {
+    font-size: 1.1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 1rem;
+  }
+}

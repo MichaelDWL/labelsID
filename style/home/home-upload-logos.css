@@ -1,0 +1,146 @@
+/* Home: área de upload de logos */
+
+.upload-logos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.06) 0%,
+    rgba(139, 92, 246, 0.04) 100%
+  );
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.upload-logos--locked {
+  pointer-events: none;
+  opacity: 0.75;
+  position: relative;
+}
+
+.upload-logos--locked::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-sec);
+  text-align: center;
+  padding: 1rem;
+}
+
+.upload-logos h3 {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.upload-logos h3::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%2326487e'%3E%3Cpath d='M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.6 0 16.6-4.3 21.2-11.4s5.6-16.1 1.4-23.8l-120-176zM112 192a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z'/%3E%3C/svg%3E")
+    center/contain no-repeat;
+}
+
+.upload-logos-hint {
+  padding: 1.15rem 1.25rem;
+  line-height: 1.65;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.upload-logos-hint strong {
+  color: var(--text-terc);
+}
+
+.upload-logos-fields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.upload-logo-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  background: var(--card-bg);
+  border: 2px rgba(59, 130, 246, 0.35);
+  border-radius: 10px;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.upload-logo-field:has(input:focus),
+.upload-logo-field:focus-within {
+  border-color: var(--primary);
+  border-style: solid;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.upload-logo-field input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.upload-logo-status {
+  color: #059669;
+  text-align: center;
+  min-height: 1.25rem;
+  display: block;
+}
+
+.upload-logo-status:empty {
+  display: none;
+}
+
+.upload-logo-field--uploaded {
+  border-color: rgba(5, 150, 105, 0.5);
+  border-style: solid;
+  background: rgba(5, 150, 105, 0.04);
+}
+
+.upload-logo-field--uploaded:hover {
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.06);
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.12);
+}
+
+.upload-logo-recommended {
+  display: block;
+  color: var(--text-sec);
+  text-align: center;
+  padding: 0.5rem 1.25rem;
+  background: rgba(100, 116, 139, 0.08);
+  border-radius: 6px;
+  border: 1px solid rgba(100, 116, 139, 0.12);
+}
+
+@media (max-width: 520px) {
+  .upload-logos-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .upload-logos {
+    padding: 1rem;
+  }
+}

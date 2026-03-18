@@ -1,0 +1,14 @@
+/* Área principal (home) */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem 1.25rem;
+  align-items: center;
+  background-color: var(--bg-page);
+  margin-top: 40px;
+  margin-bottom: 80px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
